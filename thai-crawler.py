@@ -64,7 +64,7 @@ for link in to_be_visited:
     filename = str(i) + ".txt"
     print str(i) + u" " + link
     i+=1
-    outfile = codecs.open(u"/home/boris/Work/thai/spider/thai_dailynews2/" + filename, "w", "utf-8")
+    outfile = codecs.open(u"~/thai_dailynews2/" + filename, "w", "utf-8")
     outfile.write(u'###' + link + u'\n\n')
     outfile.write(final_txt)
     outfile.close()
