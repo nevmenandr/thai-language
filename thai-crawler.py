@@ -6,6 +6,8 @@ import HTMLParser
 
 hPrs = HTMLParser.HTMLParser()
 
+#if re.search(u"[ก-๛]", token):
+
 visited = []
 to_be_visited = []
 
