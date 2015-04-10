@@ -1,0 +1,4 @@
+Правила для thairath:
+
+генерация id в адресе:
+http://www.thairath.co.th/content/<id>
