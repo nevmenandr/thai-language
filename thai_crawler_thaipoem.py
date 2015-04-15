@@ -55,7 +55,7 @@ def check_links(text, visited, to_be_visited):
     links = []
     if u"http://www.thaipoem.com/" in visited:
         links = re.findall(u' href="(.*/[0-9]*)"', text)
-    if u"http://www.dailynews.co.th/Content" in visited:
+    if u"http://www.thaipoem.com/" in visited:
         links = re.findall(u' href="(.*?/Content/.*?)"', text)
     for link in links:
         if link in visited:
