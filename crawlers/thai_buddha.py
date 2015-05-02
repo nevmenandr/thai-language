@@ -54,6 +54,8 @@ visited.append(u"http://www.mcu.ac.th/site/articlecontent.php")
 to_be_visited = check_links(thai_texts, visited, to_be_visited)
 i = 1
 for link in to_be_visited:
+    if i > 10:
+        break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('cp874'))
     if u'www.mcu.ac.th/site' in link:
@@ -71,7 +73,7 @@ for link in to_be_visited:
     filename = str(i) + ".txt"
     print str(i) + u" " + link
     i+=1
-    outfile = codecs.open(u"/Users/marina/thai_buddha/" + filename, "w", "utf-8")
+    outfile = codecs.open(filename, "w", "utf-8")
     outfile.write(u'###' + link + u'\n\n')
     outfile.write(final_txt)
     outfile.close()

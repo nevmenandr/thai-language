@@ -44,7 +44,7 @@ def check_links(text, visited, to_be_visited):
     return to_be_visited
     
 thai_texts = crawl_forward(u"http://www.thaipost.net/")
-print thai_texts
+# print thai_texts
 visited.append(u"http://www.thaipost.net/")
 to_be_visited = check_links(thai_texts, visited, to_be_visited)
 i = 1
@@ -54,6 +54,7 @@ for link in to_be_visited:
     link = urllib2.quote(link.encode('utf-8'))
     if u'www.thaipost.net' in link:
         link = u"http://" + link
+        print link
     else:
         if re.search('q=[ก-๛]', link) is not None:
             link = u"http://www.thaipost.net" + link
@@ -67,7 +68,7 @@ for link in to_be_visited:
     filename = "thaipost.net/" + str(i) + ".xml"
     print str(i) + u" " + link
     i+=1
-    outfile = codecs.open(u"/Users/apple/Desktop/thaipost/" + filename, "w", "utf-8")
+    outfile = codecs.open(filename, "w", "utf-8")
     initial_str = u'<?xml version = "1.0" encoding = "UTF-8"?>\n<meta><link>' + link +\
                   u'</link>\n' + u'<title>' + title + u'</title>\n<genre>paper</genre></meta>\n<text>\n'
     outfile.write(initial_str)
