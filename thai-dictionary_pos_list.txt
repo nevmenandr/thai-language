@@ -1,3 +1,5 @@
+# список частиц словаря thai-dictionary.com
+
 Cambodian
 Chinese
 English
