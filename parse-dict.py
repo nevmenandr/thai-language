@@ -9,7 +9,8 @@ import HTMLParser
 
 hPrs = HTMLParser.HTMLParser()
 
-path = u'letters\\'
+path_personal = u'/home/lizaku55/PycharmProjects/Thai/'
+path = path_personal + u'letters'
 files = os.listdir(u'letters')
 barr = []
 bdict = {}
