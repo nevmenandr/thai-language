@@ -25,3 +25,5 @@
 [**Smart Word Analysis for Thai SWATH**](http://www.cs.cmu.edu/~paisarn/software.html)
 
 [**Tlexs**](http://sansarn.com/tlex/)
+
+[**Краулер своими руками**](http://pi-code.blogspot.ru/search/label/%D0%BA%D1%80%D0%B0%D1%83%D0%BB%D0%B5%D1%80)
