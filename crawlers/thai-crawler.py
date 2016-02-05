@@ -3,6 +3,7 @@ import urllib2
 import re
 import codecs
 import HTMLParser
+import os
 
 hPrs = HTMLParser.HTMLParser()
 
@@ -45,8 +46,12 @@ visited.append(u"http://www.dailynews.co.th")
 to_be_visited = check_links(thai_texts, visited, to_be_visited)
 i = 1
 for link in to_be_visited:
+    try:
+        os.makedirs(u'./texts/')
+    except:
+        pass
     print link
-    if i > 10:
+    if i > 5:
         break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
@@ -55,7 +60,7 @@ for link in to_be_visited:
     visited.append(link)
     to_be_visited = check_links(thai_texts, visited, to_be_visited)
     final_txt = thaiize_text(text)
-    filename = str(i) + ".txt"
+    filename = './texts/' + str(i) + ".txt"
     print str(i) + u" " + link
     i+=1
     initial_str = u'<?xml version="1.0" encoding="UTF-8"?>\n<meta><link>' + link + u'</link>\n' +\

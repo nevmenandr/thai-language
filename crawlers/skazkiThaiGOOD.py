@@ -10,12 +10,14 @@ hPrs = HTMLParser.HTMLParser()
 visited = []
 to_be_visited = []
 
+
 def crawl_forward(link):
     infile = urllib2.urlopen(link)
     raw_text = infile.read()
     text = raw_text.decode("utf-8")
     infile.close()
     return text
+
 
 def thaiize_text(unclear_text):
     thai_article = []
@@ -40,6 +42,7 @@ def thaiize_text(unclear_text):
             fl = 1
     return thai_article, title
 
+
 def clearing(thai_article):
     latin = u'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
     #latin = list(latin)
@@ -54,6 +57,7 @@ def clearing(thai_article):
             clear_thai.append(line)
     return '\n'.join(clear_thai)
 
+
 def check_links(text, visited, to_be_visited):
     #links = re.findall(u'href="(http://www.nithan.in.th/%e.*?)"', text)
     links = re.findall(u'href="(http://www.nithan.in.th/[a-z\-]*?%e.*?)"', text)
@@ -65,6 +69,7 @@ def check_links(text, visited, to_be_visited):
     to_be_visited = set(to_be_visited)
     to_be_visited = list(to_be_visited)
     return to_be_visited
+
 
 def searching(mass, nazv):
     massivstranic = []
@@ -81,6 +86,8 @@ def searching(mass, nazv):
         print u'Собрали ссылочки с'
     i = 1
     for link in to_be_visited:
+        if i > 5:
+            break
         print u'Зашли в гости'
         #link = link.replace(u"http://", u"")
         #link = urllib2.quote(link.encode('utf-8'))

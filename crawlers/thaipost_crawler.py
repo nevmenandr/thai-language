@@ -3,11 +3,13 @@ import urllib2
 import re
 import codecs
 import HTMLParser
+import os
 
 hPrs = HTMLParser.HTMLParser()
 
 visited = []
 to_be_visited = []
+
 
 def crawl_forward(link):
     infile = urllib2.urlopen(link) 
@@ -15,6 +17,7 @@ def crawl_forward(link):
     text = raw_text.decode("utf-8")
     infile.close()
     return text
+
 
 def thaiize_text(unclear_text):
     thai_article = []
@@ -29,7 +32,6 @@ def thaiize_text(unclear_text):
         if '<div class="field-items"><div class="field-item even" property="content:encoded">' in line:
             fl = 1
     return '\n'.join(thai_article)
-            
         
 
 def check_links(text, visited, to_be_visited):
@@ -47,11 +49,19 @@ thai_texts = crawl_forward(u"http://www.thaipost.net/")
 # print thai_texts
 visited.append(u"http://www.thaipost.net/")
 to_be_visited = check_links(thai_texts, visited, to_be_visited)
+
+try:
+    os.makedirs(u'./texts/')
+except:
+    pass
+
 i = 1
 for link in to_be_visited:
+    if i > 5:
+        break
     print link
     link = link.replace(u"http://", u"")
-    link = urllib2.quote(link.encode('utf-8'))
+    # link = urllib2.quote(link.encode('utf-8'))
     if u'www.thaipost.net' in link:
         link = u"http://" + link
         print link
@@ -65,9 +75,9 @@ for link in to_be_visited:
     visited.append(link)
     to_be_visited = check_links(thai_texts, visited, to_be_visited)
     final_txt = thaiize_text(text)
-    filename = "thaipost.net/" + str(i) + ".xml"
+    filename = u'./texts/' + str(i) + ".xml"
     print str(i) + u" " + link
-    i+=1
+    i += 1
     outfile = codecs.open(filename, "w", "utf-8")
     initial_str = u'<?xml version = "1.0" encoding = "UTF-8"?>\n<meta><link>' + link +\
                   u'</link>\n' + u'<title>' + title + u'</title>\n<genre>paper</genre></meta>\n<text>\n'

@@ -32,6 +32,7 @@ def thaipoem_parse(unclear_text):
             thai_article += p + '\n'
     return thai_article
 
+
 def check_links(text, visited, to_be_visited):
     links = []
     if u"http://www.thairath.co.th/ent/novel" in visited:
@@ -51,6 +52,7 @@ thaipoem_texts = crawl_forward(u"http://www.thairath.co.th/ent/novel")
 thaipoem_visited.append(u"http://www.thairath.co.th/ent/novel")
 thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
 i = 1
+print len(thaipoem_to_be_visited)
 for link in thaipoem_to_be_visited:
     if i > 5:
         break
