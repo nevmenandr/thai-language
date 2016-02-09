@@ -41,7 +41,10 @@ def thaipoem_parse(unclear_text):
 
     find_text = re.search(u'<pre.*?>(.*)</pre>', unclear_text, re.DOTALL)
     if find_text is not None:
-        return find_text.group(1)
+        output = re.sub(u'<.*?>', u'', find_text.group(1), flags=re.U)
+        output = re.sub(u'\.+', u'', output, flags=re.U)
+        output = re.sub(u'\t+', u'', output, flags=re.U)
+        return output
 
 
 def check_links(text, visited, to_be_visited):
@@ -65,7 +68,7 @@ thaipoem_visited.append(u"http://www.thaipoem.com/")
 thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
 i = 1
 for link in thaipoem_to_be_visited:
-    if i > 10:
+    if i > 5:
         break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
