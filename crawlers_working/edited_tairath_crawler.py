@@ -30,7 +30,7 @@ def thaipoem_parse(unclear_text):
     if find_text is not None:
         for p in find_text:
             thai_article += p + '\n'
-    #костыли
+    # костыли
     thai_article = re.sub(u'&[a-z]+;',u'',thai_article,flags=re.U)
     thai_article = re.sub(u'<.*?>',u'\n',thai_article,flags=re.U)
     thai_article = re.sub(u'ooooooo',u'',thai_article,flags=re.U)
@@ -58,10 +58,10 @@ thaipoem_texts = crawl_forward(u"http://www.thairath.co.th/ent/novel")
 thaipoem_visited.append(u"http://www.thairath.co.th/ent/novel")
 thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
 i = 1
-print len(thaipoem_to_be_visited)
+# print len(thaipoem_to_be_visited)
 for link in thaipoem_to_be_visited:
-    if i > 5:
-        break
+    # if i > 5:
+    #     break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
     if u'www.thairath.co.th/ent/novel' in link:
@@ -71,7 +71,7 @@ for link in thaipoem_to_be_visited:
     thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
     final_txt = thaipoem_parse(text)
     filename = str(i) + ".txt"
-    print str(i) + u" " + link
+    # print str(i) + u" " + link
     i+=1
     if not os.path.exists(u'thairath/'):
         os.makedirs(u'thairath/')

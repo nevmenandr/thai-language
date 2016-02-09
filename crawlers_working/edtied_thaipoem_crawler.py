@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import urllib2
 import re
 import codecs
@@ -44,6 +45,8 @@ def thaipoem_parse(unclear_text):
         output = re.sub(u'<.*?>', u'', find_text.group(1), flags=re.U)
         output = re.sub(u'\.+', u'', output, flags=re.U)
         output = re.sub(u'\t+', u'', output, flags=re.U)
+        output = re.sub(u'\n+', u'\n', output, flags=re.U)
+        output += u'</text>'
         return output
 
 
@@ -52,7 +55,7 @@ def check_links(text, visited, to_be_visited):
     if u"http://www.thaipoem.com/" in visited:
         links = re.findall(u' href="(.*/[0-9]+)"', text)
     for link in links:
-        print link
+        # print link
         if link in visited:
             continue
         else:
@@ -68,8 +71,8 @@ thaipoem_visited.append(u"http://www.thaipoem.com/")
 thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
 i = 1
 for link in thaipoem_to_be_visited:
-    if i > 5:
-        break
+    # if i > 2:
+    #     break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
     if u'www.thaipoem.com' in link:
@@ -79,7 +82,7 @@ for link in thaipoem_to_be_visited:
     thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
     final_txt = thaipoem_parse(text)
     filename = str(i) + ".txt"
-    print str(i) + u" " + link
+    # print str(i) + u" " + link
     i+=1
     if not os.path.exists(u'thaipoem/'):
         os.makedirs(u'thaipoem/')
