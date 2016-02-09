@@ -30,6 +30,12 @@ def thaipoem_parse(unclear_text):
     if find_text is not None:
         for p in find_text:
             thai_article += p + '\n'
+    #костыли
+    thai_article = re.sub(u'&[a-z]+;',u'',thai_article,flags=re.U)
+    thai_article = re.sub(u'<.*?>',u'\n',thai_article,flags=re.U)
+    thai_article = re.sub(u'ooooooo',u'',thai_article,flags=re.U)
+    thai_article = re.sub(u'(\n)+\n',u'\n',thai_article,flags=re.U)
+    thai_article += u'</text>'
     return thai_article
 
 
