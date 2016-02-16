@@ -1,2 +1,3 @@
-apt-get install python-dev
-pip install pythai
+'apt-get install python-dev
+
+pip install pythai'
