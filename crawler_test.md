@@ -6,5 +6,5 @@
 * ``thai_fairytales.py`` - запущен
 * ``thai_papers.py`` - запущен
 * ``thai_buddha.py`` - выкинули
-* ``thai_poem_3.py`` - запущен
+* ``thai_poem_3.py`` - запущен, дубиирует ``thai_poem.py``
 * ``thaipost_crawler.py`` - выкинули
