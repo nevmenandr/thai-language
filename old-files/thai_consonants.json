@@ -1,0 +1,194 @@
+{
+    "ก": {
+        "Initial": "k", 
+        "Final": "k"
+    }, 
+    "ฃ": {
+        "Initial": "kh", 
+        "Final": "k"
+    }, 
+    "ข": {
+        "Initial": "kh", 
+        "Final": "k"
+    }, 
+    "ฅ": {
+        "Initial": "kh", 
+        "Final": "k"
+    }, 
+    "ค": {
+        "Initial": "kh", 
+        "Final": "k"
+    }, 
+    "ง": {
+        "Initial": "ng", 
+        "Final": "ng"
+    }, 
+    "ฆ": {
+        "Initial": "kh", 
+        "Final": "k"
+    }, 
+    "ฉ": {
+        "Initial": "ch", 
+        "Final": "t"
+    }, 
+    "จ": {
+        "Initial": "ch", 
+        "Final": "t"
+    }, 
+    "ซ": {
+        "Initial": "s", 
+        "Final": "t"
+    }, 
+    "ช": {
+        "Initial": "ch", 
+        "Final": "t"
+    }, 
+    "ญ": {
+        "Initial": "y", 
+        "Final": "n"
+    }, 
+    "ฌ": {
+        "Initial": "ch", 
+        "Final": "-"
+    }, 
+    "ฏ": {
+        "Initial": "t", 
+        "Final": "t"
+    }, 
+    "ฎ": {
+        "Initial": "d", 
+        "Final": "t"
+    }, 
+    "ฑ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ฐ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ณ": {
+        "Initial": "n", 
+        "Final": "n"
+    }, 
+    "ฒ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ต": {
+        "Initial": "t", 
+        "Final": "t"
+    }, 
+    "ด": {
+        "Initial": "d", 
+        "Final": "t"
+    }, 
+    "ท": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ถ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "น": {
+        "Initial": "n", 
+        "Final": "n"
+    }, 
+    "ธ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ป": {
+        "Initial": "p", 
+        "Final": "p"
+    }, 
+    "บ": {
+        "Initial": "b", 
+        "Final": "p"
+    }, 
+    "ฝ": {
+        "Initial": "f", 
+        "Final": "-"
+    }, 
+    "ผ": {
+        "Initial": "ph", 
+        "Final": "-"
+    }, 
+    "ฟ": {
+        "Initial": "f", 
+        "Final": "p"
+    }, 
+    "พ": {
+        "Initial": "ph", 
+        "Final": "p"
+    }, 
+    "ม": {
+        "Initial": "m", 
+        "Final": "m"
+    }, 
+    " ": {
+        "Initial": "th", 
+        "Final": "t"
+    }, 
+    "ร": {
+        "Initial": "r", 
+        "Final": "n"
+    }, 
+    "ย": {
+        "Initial": "y", 
+        "Final": "-"
+    }, 
+    "ล": {
+        "Initial": "l", 
+        "Final": "n"
+    }, 
+    "ฤ": {
+        "Initial": "rue", 
+        "Final": "-"
+    }, 
+    "ว": {
+        "Initial": "w", 
+        "Final": "-"
+    }, 
+    "ฦ": {
+        "Initial": "lue", 
+        "Final": "-"
+    }, 
+    "ษ": {
+        "Initial": "s", 
+        "Final": "t"
+    }, 
+    "ศ": {
+        "Initial": "s", 
+        "Final": "t"
+    }, 
+    "ห": {
+        "Initial": "h", 
+        "Final": "-"
+    }, 
+    "ฤๅ": {
+        "Initial": "rue", 
+        "Final": "-"
+    }, 
+    "ฬ": {
+        "Initial": "l", 
+        "Final": "n"
+    }, 
+    "ฮ": {
+        "Initial": "h", 
+        "Final": "-"
+    }, 
+    "ฦๅ": {
+        "Initial": "lue", 
+        "Final": "-"
+    }, 
+    "ส": {
+        "Initial": "s", 
+        "Final": "t"
+    }, 
+    "ภ": {
+        "Initial": "ph", 
+        "Final": "p"
+    }
+}
