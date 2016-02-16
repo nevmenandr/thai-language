@@ -4,7 +4,8 @@
 
 [**Тайский корпус**](http://www.arts.chula.ac.th/~ling/TNCII/)
 
-[**Cайт-словарь**](http://www.thai-language.com/)
+[**Cайт-словарь**](http://www.thai-language.com/)  
+[**Старая версия словаря**](http://www.thai-language.com/dict)  
 *Там примерно 52 тыс. слов. Вот [он в скачанном виде](https://yadi.sk/d/uw1XOBwKfQsD6),
 *нужно проверить, всё ли скачалось*
 
