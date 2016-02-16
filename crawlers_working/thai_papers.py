@@ -47,12 +47,12 @@ to_be_visited = check_links(thai_texts, visited, to_be_visited)
 i = 1
 for link in to_be_visited:
     try:
-        os.makedirs(u'./texts/')
+        os.makedirs(u'./papers/')
     except:
         pass
     print link
-    if i > 5:
-        break
+    # if i > 5:
+    #     break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
     link = u"http://www.dailynews.co.th" + link

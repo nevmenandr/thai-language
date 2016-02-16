@@ -57,8 +57,8 @@ thaipoem_visited.append(u"http://www.thaipoem.com/")
 thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_to_be_visited)
 i = 1
 for link in thaipoem_to_be_visited:
-    if i > 5:
-        break
+    # if i > 5:
+    #     break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
     if u'www.thaipoem.com' in link:
@@ -70,9 +70,9 @@ for link in thaipoem_to_be_visited:
     filename = str(i) + ".txt"
     print str(i) + u" " + link
     i += 1
-    if not os.path.exists(u'thaipoem/'):
-        os.makedirs(u'thaipoem/')
-    outfile = codecs.open(u'thaipoem/' + filename, "w", "utf-8")
+    if not os.path.exists(u'poem3/'):
+        os.makedirs(u'poem3/')
+    outfile = codecs.open(u'poem3/' + filename, "w", "utf-8")
     title = ''
     initial_str = u'<?xml version="1.0" encoding="UTF-8"?>\n<meta><link>' + link + u'</link>\n' +\
               u'<title>' + title + u'</title>\n<genre>poem</genre></meta>\n<text>\n'

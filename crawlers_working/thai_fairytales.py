@@ -86,8 +86,8 @@ def searching(mass, nazv):
         print u'Собрали ссылочки с'
     i = 1
     for link in to_be_visited:
-        if i > 5:
-            break
+        # if i > 5:
+        #     break
         print u'Зашли в гости'
         #link = link.replace(u"http://", u"")
         #link = urllib2.quote(link.encode('utf-8'))
@@ -97,6 +97,7 @@ def searching(mass, nazv):
         #to_be_visited = check_links(thai_texts, visited, to_be_visited)
         final_txt, title = thaiize_text(text)
         final_txt = clearing(final_txt)
+        final_txt += u'\n</text>'
         #final_txt='\n'.join(final_txt)
         filename = str(i) + ".txt"
         print str(i) + u" " + link

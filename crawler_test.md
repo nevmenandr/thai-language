@@ -1,10 +1,10 @@
 ## Тест краулеров. 05.02.2016
 
 * ``crawler-for-thairath.py`` - скачивает текст, но нужно починить очистку от html
-* ``edited_tairath_crawler.py`` - работает, оставляет некоторый html
-* ``edtied_thaipoem_crawler.py`` - работает, оставляет некоторый html
-* ``skazkiThaiGOOD.py`` - работает
-* ``thai-crawler.py`` - работает, оставляет некоторый html
-* ``thai_buddha.py`` - ссылки обходит, но текст нужный не достает. Вылетает иногда из-за ошибки кодировки. Нужно или исправлять или выкинуть.
-* ``thai_crawler_thaipoem.py`` - работает, оставляет некоторый html
-* ``thaipost_crawler.py`` - не работает, нужно разбираться почему
+* ``thai_poem_2.py`` - отработал
+* ``thai_poem.py`` - отработал
+* ``thai_fairytales.py`` - запущен
+* ``thai_papers.py`` - запущен
+* ``thai_buddha.py`` - выкинули
+* ``thai_poem_3.py`` - запущен
+* ``thaipost_crawler.py`` - выкинули
