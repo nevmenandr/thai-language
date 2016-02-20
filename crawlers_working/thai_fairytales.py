@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-import urllib2
+
 import re
 import codecs
 import os
+os.environ['http_proxy']=''
 import HTMLParser
+import urllib2
 
 hPrs = HTMLParser.HTMLParser()
 
-os.environ['http_proxy']=''
+
 
 visited = []
 to_be_visited = []
