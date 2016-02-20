@@ -60,8 +60,8 @@ thaipoem_to_be_visited = check_links(thaipoem_texts, thaipoem_visited, thaipoem_
 i = 1
 print len(thaipoem_to_be_visited)
 for link in thaipoem_to_be_visited:
-    # if i > 5:
-    #     break
+    if i > 5:
+        break
     link = link.replace(u"http://", u"")
     link = urllib2.quote(link.encode('utf-8'))
     if u'www.thairath.co.th/ent/novel' in link:

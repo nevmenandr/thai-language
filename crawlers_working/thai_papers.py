@@ -60,7 +60,7 @@ for link in to_be_visited:
     visited.append(link)
     to_be_visited = check_links(thai_texts, visited, to_be_visited)
     final_txt = thaiize_text(text)
-    filename = './texts/' + str(i) + ".txt"
+    filename = './papers/' + str(i) + ".txt"
     print str(i) + u" " + link
     i+=1
     initial_str = u'<?xml version="1.0" encoding="UTF-8"?>\n<meta><link>' + link + u'</link>\n' +\

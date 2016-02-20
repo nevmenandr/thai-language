@@ -7,6 +7,8 @@ import HTMLParser
 
 hPrs = HTMLParser.HTMLParser()
 
+os.environ['http_proxy']=''
+
 visited = []
 to_be_visited = []
 
