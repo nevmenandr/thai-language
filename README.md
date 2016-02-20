@@ -7,7 +7,7 @@
 [**Cайт-словарь**](http://www.thai-language.com/)  
 [**Старая версия словаря**](http://www.thai-language.com/dict)  
 *Там примерно 52 тыс. слов. Вот [он в скачанном виде](https://yadi.sk/d/uw1XOBwKfQsD6),
-*нужно проверить, всё ли скачалось*
+Ранее пропущенные страницы находятся [тут](https://yadi.sk/d/mgz9psnYovN6j)
 
 [**Другой тайский словарь**](https://github.com/veer66/Yaitron/tree/master/data)
 
