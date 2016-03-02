@@ -10,7 +10,7 @@ freq = {}
 pages = os.listdir('./corpora')
 
 for page in pages:
-    f = codecs.open(u'C:/Users/M/Desktop/corpora/' + page, 'r', 'utf-8-sig')
+    f = codecs.open(u'C:/Users/M/Desktop/corpora/' + page, 'r', 'utf-8')
     text = f.read()
     f.close()
     words = text.split(u'|')
@@ -22,7 +22,7 @@ for page in pages:
         if word not in freq:
             freq[word] = 1
 
-f = codecs.open(u'Word frequency.txt', 'w', 'utf-8-sig')
+f = codecs.open(u'Word frequency.txt', 'w', 'utf-8')
 
 for word in reversed(sorted(freq, key=freq.get)):
     line = word + u' - ' + str(freq[word])
