@@ -16,7 +16,7 @@ for page in pages:
         if page[0:3] not in letters:
             letters.append(page[0:3])
         name = u'C:/Users/M/Desktop/Thai/pages/' + page
-        f = codecs.open(name, 'r', 'utf-8-sig')
+        f = codecs.open(name, 'r', 'utf-8')
         text = f.read()
         f.close()
         n = re.findall('Page ([0-9]+?) of ([0-9]+?)\\.', text, flags=re.U)
