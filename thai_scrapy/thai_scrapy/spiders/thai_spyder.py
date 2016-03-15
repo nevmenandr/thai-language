@@ -8,14 +8,14 @@ from thai_scrapy.items import ArticleItem
 i = 1
 
 
-class MySpider(CrawlSpider):
+class PoemSpider(CrawlSpider):
 
     global i
 
-    name = u'thai_spy'
-    allowed_domains = [u'dailynews.co.th']
+    name = u'thaipoem'
+    allowed_domains = [u'thaipoem.com']
     start_urls = [
-        u'http://www.dailynews.co.th',
+        u'http://www.thaipoem.com',
     ]
 
     rules = (
@@ -27,8 +27,8 @@ class MySpider(CrawlSpider):
         global i
 
         hxs = HtmlXPathSelector(response)
-        paragraphs = hxs.xpath(u'//div[@class="entry"]/p')
-        title = hxs.xpath(u'//h1[@class="entry-title"]/text()').extract()
+        paragraphs = hxs.xpath(u'//pre/descendant::*')
+        title = hxs.xpath(u'//h1[@class="font-poem-title tp-txt-center"]/text()').extract()
         content = []
         item = ArticleItem()
         for p in paragraphs:
@@ -44,7 +44,7 @@ class MySpider(CrawlSpider):
             yield item
 
 
-class MySpider(CrawlSpider):
+class NewsSpider(CrawlSpider):
 
     global i
 
