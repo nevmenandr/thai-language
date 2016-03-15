@@ -16,9 +16,21 @@ http://news.sanook.com/
 
 http://horoscope.sanook.com/
 
-http://horoscope.sanook.com/
-
 http://www.kppnews.net/
 
 http://www.prsociety.net/
+
+http://www.posttoday.com/
+
+http://www.chiangmainews.co.th/
+
+http://www.newszociety.com/
+
+http://www.msn.com/th-th/
+
+http://hilight.kapook.com/
+
+http://news.kapook.com/
+
+http://www.tnnthailand.com/
 
