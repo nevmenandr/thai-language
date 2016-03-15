@@ -17,3 +17,8 @@ http://news.sanook.com/
 http://horoscope.sanook.com/
 
 http://horoscope.sanook.com/
+
+http://www.kppnews.net/
+
+http://www.prsociety.net/
+
