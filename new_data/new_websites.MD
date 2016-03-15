@@ -34,3 +34,4 @@ http://news.kapook.com/
 
 http://www.tnnthailand.com/
 
+http://asianpacificnews.com/news4/
