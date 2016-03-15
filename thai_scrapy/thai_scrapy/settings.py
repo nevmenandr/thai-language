@@ -11,7 +11,7 @@
 
 BOT_NAME = 'thai_scrapy'
 
-ITEM_PIPELINES = ['thai_scrapy.pipelines.JsonWithEncodingPipeline']
+ITEM_PIPELINES = ['thai_scrapy.pipelines.XMLPipeline']
 SPIDER_MODULES = ['thai_scrapy.spiders']
 NEWSPIDER_MODULE = 'thai_scrapy.spiders'
 
