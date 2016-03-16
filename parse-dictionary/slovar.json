@@ -1,0 +1,21 @@
+{
+  "THAIWORD": {
+    "1": [
+      "TRANSLATION", 
+      "POS", 
+      "TRANSLIT"
+    ], 
+    "3": [
+      "TRANSLATION3", 
+      "POS3", 
+      "TRANSLIT3"
+    ]
+  }, 
+  "THAIWORD2": {
+    "2": [
+      "TRANSLATION2", 
+      "POS2", 
+      "TRANSLIT2"
+    ]
+  }
+}
