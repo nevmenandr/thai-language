@@ -1,0 +1,61 @@
+#sentno	#wordno	#lang	#graph	#word	#indexword	#nvars	#nlems	#nvar	#lem	#trans	#trans_ru	#lex	#gram	#flex	#punctl	#punctr	#sent_pos
+#meta.docid	1
+#meta.author	Әхмәҙин Әфтәх
+#meta.title	Күк күкрәтеп юлдарыма
+#meta.date1	1900
+#meta.date2	2010
+#meta.genre	verse
+#meta.words	38
+#meta.sentences	15
+#meta.date_displayed	——
+1	1		cap	Күк		2	1	1	күк	небо		S	NOM SG Ø syll8				bos
+1	1		cap	Күк		2	1	2	күк	синий		ADJ	NOM SG Ø syll8				bos
+1	2			күкрәтеп		1	1	1	күкрә	греметь		V	CAUS GER т еп syll8				
+1	3			юлдарыма		1	1	1	юл	дорога		S	PL POSS_1SG DAT дар ым а syll8				eos
+2	1		cap	Саҡырып		2	2	1	саҡыр	звать		V	GER ып syll7				bos
+2	1		cap	Саҡырып		2	2	2	са	косить		V	CAUS GER ҡыр ып syll7				bos
+2	2			ата		4	2	1	ат	лошадь, имя		S	DAT а syll7				
+2	2			ата		4	2	2	ата	отец, самец		S	NOM SG Ø syll7				
+2	2			ата		4	2	3	ата	называть		V	IMP 2SG Ø syll7				
+2	2			ата		4	2	4	ат	стрелять, расцветать		V	PRES а syll7				
+2	3			таңы		1	1	1	таң	заря		S	POSS_3SG_PL ы syll7			,\n	eos
+3	1		cap	Тамырымда		1	1	1	тамыр	корень		S	POSS_1SG LOC ым да syll8				bos
+3	2			башҡорт		1	1	1	башҡорт	башкир		S	NOM SG Ø syll8			—	
+3	3			атлы		1	1	1	атлы	имеющий лошадь		ADJ	NOM SG Ø syll8				eos
+4	1		cap	Күсмә		3	2	1	күс	перемещаться		V	NEG мә syll7				bos
+4	1		cap	Күсмә		3	2	2	күс	рой		S	POSS_1SG DAT м ә syll7				bos
+4	1		cap	Күсмә		3	2	3	күсмә	перелетный, кочевой		ADJ	NOM SG Ø syll7				bos
+4	2			халҡымдың		1	1	1	халҡ	народ		S	POSS_1SG GEN ым дың syll7				
+4	3			ҡаны		1	1	1	ҡан	кровь		S	POSS_3SG_PL ы syll7			.\n	eos
+5	1			 												\n	
+6	1		cap	Юлдар		1	1	1	юл	дорога		S	PL дар syll8				bos
+6	2			гиҙәм		1	1	1	гиҙ	пересекать		V	PRES 1SG ә м syll8			,	
+6	3			йылдар		1	1	1	йыл	год		S	PL дар syll8				
+6	4			гиҙәм		1	1	1	гиҙ	пересекать		V	PRES 1SG ә м syll8				eos
+7	1		cap	Быуаттар		1	1	1	быуат	век		S	PL тар syll7				bos
+7	2			төпкөлөнән		1	1	1	төпкөл	глубина		S	POSS_3SG_PL ABL ө нән syll7			,\n	eos
+8	1		cap	Замандашым		1	1	1	замандаш	современник		S	POSS_1SG ым syll8			,	bos
+8	2			сәләм		1	1	1	сәләм	привет		S	NOM SG Ø syll8				
+8	3			һиңә		1	1	1	һи	ты		SPRO	DAT ңә syll8				eos
+9	1		cap	Башҡорттоң		1	1	1	башҡорт	башкир		S	GEN тоң syll7				bos
+9	2			төп		1	1	1	төп	дно, основа		S	NOM SG Ø syll7				
+9	3			иленән		2	2	1	иле	с палец толщиной		S	ABL нән syll7			.\n	eos
+9	3			иленән		2	2	2	ил	страна		S	POSS_3SG_PL ABL е нән syll7			.\n	eos
+10	1			 												\n	
+11	1		cap	Аманаты		1	1	1	аманат	аманат		S	POSS_3SG_PL ы syll8				bos
+11	2			бабаларҙың		1	1	1	баба	баба		S	PL GEN лар ҙың syll8			,\n	eos
+12	1		cap	Булығыҙ		1	1	1	булығыҙ	будьте		V	IMP 2SG Ø syll7				bos
+12	2			татыу		1	1	1	татыу	дружный, согласный		ADJ	NOM SG Ø syll7			—	
+12	3			бергә		2	2	1	бер	один		NUM	DAT гә syll7			.\n	eos
+12	3			бергә		2	2	2	бергә	вместе		ADJ	NOM SG Ø syll7			.\n	eos
+13	1		cap	Күс		2	1	1	күс	перемещаться		V	IMP 2SG Ø syll8				bos
+13	1		cap	Күс		2	1	2	күс	рой		S	NOM SG Ø syll8				bos
+13	2			ҡортондай		1	1	1	ҡорт	червь, пчела, волк		S	POSS_3SG ASSIM он дай syll8				
+13	3			йыйылайыҡ		1	1	1	йыйылайы	?		V	1PL ҡ syll8				eos
+14	1		cap	Уралым		2	2	1	урал	Урал		S	POSS_1SG ым syll7			—	bos
+14	1		cap	Уралым		2	2	2	ура	мотать, заворачивать, закутывать		V	PASS 1SG л ым syll7			—	bos
+14	2			тирмәбеҙгә		1	1	1	тирмә	юрта		S	POSS_1PL DAT беҙ гә syll7			,\n	eos
+15	1		cap	Йәшәйек		1	1	1	йәшәйе	?		V	1PL к syll7				bos
+15	2			бергәбергә		3	3	1	бергәб	?		V	INF ергә syll7			.\n	eos
+15	2			бергәбергә		3	3	2	бергәбер	?		S	DAT гә syll7			.\n	eos
+15	2			бергәбергә		3	3	3	бергәберг	?		V	PRES ә syll7			.\n	eos
