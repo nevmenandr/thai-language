@@ -35,3 +35,17 @@ http://news.kapook.com/
 http://www.tnnthailand.com/
 
 http://asianpacificnews.com/news4/
+
+http://m.news-lifestyle.com
+
+http://www.bia.or.th/html_th/site-content/40-news
+
+junknews.today/junk-news
+
+meekhao.com
+
+thestar.gmember.com/news
+
+1morenews.com
+
+news.thaieurope.net
