@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import codecs, os, shutil, json
-#import pythai
+import pythai
 DICT = u"test_dict.json"
 
 def main():
     global DICT
     path_load = get_path() 
-    path_load = u"c:\\test" #вставка 
+    #path_load = u"c:\\test" #вставка 
     dictionary = read_data(DICT)
     
     path_save = copy_repository(path_load)
@@ -46,9 +46,10 @@ def tag_file(path, dictionary): ##DONE
     
     text = tag_text(text, dictionary)
 
-    new_file = codecs.open(path, "w", "utf-8")
+    new_file = codecs.open(path+u".csv", "w", "utf-8")
     new_file.write(text)
     new_file.close()
+    os.remove(path)
     
     
 def tag_text(text, dictionary): ##hmmm...
@@ -58,16 +59,21 @@ def tag_text(text, dictionary): ##hmmm...
         result.append(u"<se>")
         for j in pythai.split(i):
             result.append(tag_word(j, dictionary))
+        result.append(u"</se>")
+    result.append(u"</body>") 
     return create_csv(result)
 
 def tag_word(word, dictionary): #!!!
+    res = u"<w>"
     if word in dictionary:
         for i in dictionary[word]:
-            for j in dictionary[word][i]:
-                pass
+            flag = dictionary[word][i]
+            res += u"<ana lex=" + u'"' + word + u'"' + u" gr=" + u'"' + flag[1]+ u'"' + u" trans=" + u'"' + flag[0] + u'"></ana>'
+    res = res + word + u"</w>"
+    return res
 
 def create_csv(result):
-    return "OK"
+    return u";".join(result)
 
 def write_repository(repository, path):
     pass
