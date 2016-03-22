@@ -1,6 +1,6 @@
 ~~http://www.dailynews.co.th~~
 
-http://www.thaipoem.com
+~~http://www.thaipoem.com~~
 
 http://www.thaigov.go.th/
 
