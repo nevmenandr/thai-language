@@ -8,9 +8,9 @@ class Word:
         except:
             self.thaiword = 'NO'
         try:
-            self.pos = root.xpath('./td[@class="pos"]')[0].text_content()
+            self.pos = root.xpath('./td[@class="pos"]')[0].text_content().split(', ')
         except:
-            pass
+            self.pos = ["pos is missing"]
         if self.thaiword != 'NO':
             self.translit = root.xpath('./td')[1].text_content()
         else:
@@ -19,6 +19,23 @@ class Word:
             self.translation = root.xpath('./td')[-1].text_content()
         except:
             self.translation = 'NO'
+
+    def posmerge(self):
+        changedict = {
+            'ADJ': 'adjective',
+            'N': 'noun',
+            'V': 'verb',
+            'VI': 'verb, intransitive',
+            'VT': 'verb, transitive',
+            'ADV': 'adverb'
+        }
+        for i in self.pos:
+            if i in changedict:
+                self.pos.pop(i)
+                if i == 'VI' or i == 'VT':
+                    self.pos.extend(changedict[i].split(', '))
+                else:
+                    self.pos.append(changedict[i])
 
 
 def readdict():
@@ -32,8 +49,8 @@ def readdict():
             words = root.xpath('//table[@class="gridtable"]/tr')
             words = words[1:-1]
             for i in words:
-                arrwords.append(Word(i))
-    print 'readdict finished'
+                arrwords.append((Word(i))
+                print 'readdict finished'
     return arrwords
 
 
@@ -66,13 +83,13 @@ def yaitron():
     for word in words:
         i = Word()
         try:
-            i.pos = word.xpath('./pos')[0].text
+            i.pos = word.xpath('./pos')[0].text.split(', ')
         except:
-            i.pos = "pos is missing"
+            i.pos = ["pos is missing"]
         i.translation = word.xpath('./headword')[0].text
         i.translit = 'NO'
         i.thaiword = word.xpath('./translation')[0].text
-        final_arr.append(i)
+        final_arr.append(i.posmerge())
         print i.translation + ' appended'
         i = None
     print 'yaitron finished'
@@ -85,14 +102,15 @@ def writedict(arr):
     d = {}
     print 'starting with dict'
     for i in arr:
-        d[i.thaiword]={}
+        d[i.thaiword] = {}
     print 'i made an empty dict'
     for i in d:
-        count=1
+        count = 1
         for n in arr:
-            d[n.thaiword][count]=[n.translation, n.pos, n.translit]
-            count+=1
-            print n.thaiword, d[n.thaiword]
+            if n.thaiword != 'NO':
+                d[n.thaiword][count] = [n.translation, n.pos, n.translit]
+                count += 1
+                print n.thaiword, d[n.thaiword]
     json.dump(d, f, ensure_ascii=False, indent=2)
     f.close()
 

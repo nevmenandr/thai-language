@@ -2,7 +2,7 @@
 
 import codecs, os, shutil, json
 import pythai
-DICT = u"test_dict.json"
+DICT = u"/home/new_words/thai/dict/dict.json"
 
 def main():
     global DICT
@@ -14,7 +14,7 @@ def main():
     tag_repository (path_save, dictionary)
 
 def get_path():
-    path = raw_input(u"Path: ")
+    path = "/home/new_words/thai/test_tagger" # raw_input(u"Path: ")
     return path
 
 #=========================================================
@@ -37,13 +37,13 @@ def tag_repository(repository, dictionary): ##DONE
     for i in os.walk(repository):
         print i
         for j in i[-1]:
-            tag_file(i[0] + u"\\\\" + j, dictionary)
+            tag_file(i[0] + u"/" + j, dictionary)
             
 def tag_file(path, dictionary): ##DONE
     new_file = codecs.open(path, "r", "utf-8")
     text = new_file.read()
     new_file.close()
-    
+    text = text.clear(text)###
     text = tag_text(text, dictionary)
 
     new_file = codecs.open(path+u".xml", "w", "utf-8")
@@ -75,8 +75,15 @@ def tag_word(word, dictionary): #!!!
 def create_csv(result):
     return u"\r\n".join(result)
 
-def write_repository(repository, path):
-    pass
+
+def text_clear(text):
+    get_text = re.compile(u"<text>.*?</text>")
+    get_tags = re.compile(u"</?text>?")
+    texts = get_text.findall(text)
+    print texts
+    for i in xrange(len(texts)):
+        texts[i] = get_tags.sub(texts[i], u"")
+    return u" ".join(texts)
 
 #=============================================================
 def read_data (path):
@@ -91,5 +98,5 @@ def write_data (path, data):
     json_file.write (json_data)
     json_file.close()
 
-
-main()
+if __name__ == '__main__':
+    main()

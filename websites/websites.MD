@@ -1,4 +1,18 @@
+~~http://www.dailynews.co.th~~
+
+http://www.thaipoem.com
+
 http://www.thaigov.go.th/
+
+
+
+http://nithan.in.th
+
+http://www.mcu.ac.th/
+
+http://www.thaipost.net
+
+http://thairath.co.th
 
 http://www.myhora.com/
 
