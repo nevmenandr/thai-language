@@ -40,12 +40,24 @@ http://m.news-lifestyle.com
 
 http://www.bia.or.th/html_th/site-content/40-news
 
-junknews.today/junk-news
+http://www.junknews.today/junk-news
 
-meekhao.com
+http://www.meekhao.com
 
-thestar.gmember.com/news
+http://thestar.gmember.com/news
 
-1morenews.com
+http://www.1morenews.com
 
-news.thaieurope.net
+http://news.thaieurope.net
+
+http://www.junknews.today/junk-news
+
+http://www.meekhao.com
+
+http://thestar.gmember.com/news
+
+http://www.1morenews.com
+
+http://news.thaieurope.net
+
+http://www.naewna.com/
