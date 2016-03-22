@@ -52,8 +52,6 @@ http://news.thaieurope.net
 
 http://www.junknews.today/junk-news
 
-http://www.meekhao.com
-
 http://thestar.gmember.com/news
 
 http://www.1morenews.com
