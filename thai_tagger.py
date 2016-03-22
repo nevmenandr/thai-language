@@ -46,7 +46,7 @@ def tag_file(path, dictionary): ##DONE
     
     text = tag_text(text, dictionary)
 
-    new_file = codecs.open(path+u".csv", "w", "utf-8")
+    new_file = codecs.open(path+u".xml", "w", "utf-8")
     new_file.write(text)
     new_file.close()
     os.remove(path)
@@ -73,7 +73,7 @@ def tag_word(word, dictionary): #!!!
     return res
 
 def create_csv(result):
-    return u";".join(result)
+    return u"\r\n".join(result)
 
 def write_repository(repository, path):
     pass
