@@ -2,19 +2,19 @@
   "THAIWORD": {
     "1": [
       "TRANSLATION", 
-      "POS", 
+      ["POS1", "POS2", "POS3"], 
       "TRANSLIT"
     ], 
     "3": [
       "TRANSLATION3", 
-      "POS3", 
+      ["POS1", "POS2", "POS3"], 
       "TRANSLIT3"
     ]
   }, 
   "THAIWORD2": {
     "2": [
       "TRANSLATION2", 
-      "POS2", 
+      ["POS4", "POS2", "POS6"], 
       "TRANSLIT2"
     ]
   }
