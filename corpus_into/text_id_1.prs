@@ -1,2 +1,26 @@
 #sentno	#wordno	#lang	#graph	#word	#indexword	#nvars	#nlems	#nvar	#lem	#trans	#trans_ru	#lex	#gram	#flex	#punctl	#punctr	#sent_pos
+#meta.docid	1
+#meta.author	
+#meta.title	Title here
+#meta.date1	
+#meta.date2	
+#meta.genre	Genre here
+#meta.words	None
 #meta.sentences	3
+#meta.date_displayed	
+1	1			Уның		2	1	1	ун		десять	NUM,poss.2sg	NUM,poss.2sg				
+1	1			Уның		2	1	2	ун		он	SPRO,poss.2sg	SPRO,poss.2sg				
+1	2			һүҙе		1	1	1	һүҙ		слово	S,poss.3sg/pl	S,poss.3sg/pl				
+1	3			тере		1	1	1	тере		живой	ADJ,nom,sg	ADJ,nom,sg				
+2	1			Ул		2	1	1	ул		он	SPRO,nom,sg	SPRO,nom,sg				
+2	1			Ул		2	1	2	ул		сын	S,nom,sg	S,nom,sg				
+2	2			вәғәҙә		1	1	1	вәғәҙә		обещание	S,nom,sg	S,nom,sg				
+2	3			һүҙҙәр		1	1	1	һүҙ		слово	S,pl	S,pl				
+2	4			йыш		2	1	1	йыш		частый	ADJ,nom,sg	ADJ,nom,sg				
+2	4			йыш		2	1	2	йыш		строгать	V,imp	V,imp				
+2	5			бирмәне		1	1	1	бир		дать	V,neg,pst.def	V,neg,pst.def				
+3	1			Һүҙһеҙ		1	1	1	һүҙ		слово	S,abe	S,abe				
+3	2			генә		1	1	1	генә			PART	PART				
+3	3			торҙо		1	1	1	тор		стоять	V,pst.def	V,pst.def				
+3	4			һүҙендә		2	1	1	һүҙ		слово	S,poss.3sg,loc	S,poss.3sg,loc				
+3	4			һүҙендә		2	1	2	һүҙ		слово	S,loc	S,loc				
