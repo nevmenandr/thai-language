@@ -65,5 +65,3 @@ http://www.1morenews.com
 http://news.thaieurope.net
 
 http://www.naewna.com/
-
-http://xn--o3cdbi8era7aon.net/
