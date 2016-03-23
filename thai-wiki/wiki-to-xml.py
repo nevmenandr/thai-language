@@ -39,21 +39,21 @@ def writeToFile(xml_string):
                         u'</link>\n\t\t<title>' + unicode(title) + \
                         u'</title>\n\t\t<genre>Encyclopedia</genre>\n\t</meta>' + \
                         u'\n\t<text>' + unicode(doc.text).replace('\n', '') + u'</text>\n</xml>'
-            f = codecs.open(title + '.xml', 'w', 'utf-8')
+            f = codecs.open('./results/' + unicode(title).replace('/', '') + '.xml', 'w', 'utf-8')
             f.write(fin_string)
         
         
 def main():
     for root, dirs, files in os.walk('.'):
         for file in files:
-            if file.startswith('wiki'):
-                print file
+            if file.startswith('wiki_'):
                 xml_file = codecs.open(root + os.sep + file, 'r', 'utf-8')
                 xml_string = xml_file.read()
                 xml_file.close()
                 xml_string = cleanXmlString(xml_string)
                 writeToFile(xml_string)
+    print 'done'
 
-    
+
 if __name__ == main():
     main()
