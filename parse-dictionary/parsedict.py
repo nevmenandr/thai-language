@@ -9,6 +9,8 @@ class Word:
             self.thaiword = 'NO'
         try:
             self.pos = root.xpath('./td[@class="pos"]')[0].text_content().split(', ')
+            if self.pos == ['']:
+                self.pos = ["pos is missing"]
         except:
             self.pos = ["pos is missing"]
         if self.thaiword != 'NO':
@@ -19,6 +21,12 @@ class Word:
             self.translation = root.xpath('./td')[-1].text_content()
         except:
             self.translation = 'NO'
+
+    def __gt__(self, other):
+        return self.thaiword > other.thaiword
+
+    def __lt__(self, other):
+        return self.thaiword < other.thaiword
 
     def posmerge(self):
         changedict = {
@@ -31,26 +39,25 @@ class Word:
         }
         for i in self.pos:
             if i in changedict:
-                self.pos.pop(i)
                 if i == 'VI' or i == 'VT':
                     self.pos.extend(changedict[i].split(', '))
                 else:
                     self.pos.append(changedict[i])
+        return self
 
 
 def readdict():
     arrwords = []
     for root2, dirs, files in os.walk('thai_dict'):
         for file in files:
-            print file
             f = codecs.open(os.path.join(root2, file), "r", "utf-8")
             f = f.read()
             root = lxml.html.fromstring(f)
             words = root.xpath('//table[@class="gridtable"]/tr')
             words = words[1:-1]
             for i in words:
-                arrwords.append((Word(i))
-                print 'readdict finished'
+                arrwords.append(Word(i))
+    print 'readdict finished'
     return arrwords
 
 
@@ -77,7 +84,6 @@ def yaitron():
         i.translit = 'NO'
         i.translation = word.xpath('./translation')[0].text
         final_arr.append(i)
-        print i.translation + ' appended'
         i = None
     words = root.xpath("//entry[@lang='eng']")
     for word in words:
@@ -89,28 +95,32 @@ def yaitron():
         i.translation = word.xpath('./headword')[0].text
         i.translit = 'NO'
         i.thaiword = word.xpath('./translation')[0].text
-        final_arr.append(i.posmerge())
-        print i.translation + ' appended'
+        i = i.posmerge()
+        final_arr.append(i)
         i = None
     print 'yaitron finished'
     return final_arr
 
 
 def writedict(arr):
-    import json
     f = codecs.open('slovar.json', 'w', 'utf-8')
     d = {}
-    print 'starting with dict'
+    subd = {}
+    arr.sort()
     for i in arr:
-        d[i.thaiword] = {}
-    print 'i made an empty dict'
-    for i in d:
+        subd[i] = [i.translation, i.pos, i.translit]
+        print i, subd[i]
+    keyss = [i.thaiword for i in arr]
+    keyss = list(set(keyss))
+    keyss.sort()
+    for i in keyss:
+        d[i] = {}
         count = 1
-        for n in arr:
-            if n.thaiword != 'NO':
-                d[n.thaiword][count] = [n.translation, n.pos, n.translit]
+        for n in subd:
+            if n.thaiword == i:
+                d[i][count] = subd[n]
                 count += 1
-                print n.thaiword, d[n.thaiword]
+        print d[i]
     json.dump(d, f, ensure_ascii=False, indent=2)
     f.close()
 
@@ -120,12 +130,11 @@ def main():
     final_arr = yaitron()
     final_arr.extend(arrwords)
     print 'next'
-    # for i in arrwords:
-    #     if i not in final_arr:
-    #         final_arr.append(Word(i))
-    #         print Word(i).translation+' finally appended'
     final_arr = set(final_arr)
     final_arr = list(final_arr)
+    final_arr.sort()
+    for i in final_arr:
+        print i.thaiword
     writedict(final_arr)
     for i in final_arr:
         if i.thaiword == "NO":
