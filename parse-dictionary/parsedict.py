@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import lxml.html, os, codecs
 
 
@@ -104,23 +105,30 @@ def yaitron():
 
 def writedict(arr):
     f = codecs.open('slovar.json', 'w', 'utf-8')
-    d = {}
-    subd = {}
-    arr.sort()
+    d = {}  # финальный словарь
+    subd = []  # служебный массив
+    subd2 = {}  # служебный словарь
+    arr.sort()  # сортировка по тайским словам
     for i in arr:
-        subd[i] = [i.translation, i.pos, i.translit]
-        print i, subd[i]
+        subd2[i] = [i.translation, i.pos,
+                    i.translit]  # делаем служебный словарь: каждому объекту ставим в соответствие перевод, часть речи и транслит
+        subd.append(
+            [i.translation, i.pos, i.translit])  # делаем служебный массив значений, отсортированный по тайским словам
     keyss = [i.thaiword for i in arr]
     keyss = list(set(keyss))
-    keyss.sort()
+    keyss.sort()  # отсортированный массив тайских слов
+    count2 = 0
     for i in keyss:
+        c = 1
         d[i] = {}
-        count = 1
-        for n in subd:
-            if n.thaiword == i:
-                d[i][count] = subd[n]
-                count += 1
-        print d[i]
+        for n in arr[count2::]:
+            if i == n.thaiword:
+                d[i][c] = [n.translation, n.pos, n.translit]
+                c += 1
+            else:
+                count2 = arr.index(n)
+                break
+        print i, d[i]
     json.dump(d, f, ensure_ascii=False, indent=2)
     f.close()
 
@@ -130,13 +138,8 @@ def main():
     final_arr = yaitron()
     final_arr.extend(arrwords)
     print 'next'
-    final_arr = set(final_arr)
-    final_arr = list(final_arr)
-    final_arr.sort()
     for i in final_arr:
         print i.thaiword
-    writedict(final_arr)
-    for i in final_arr:
         if i.thaiword == "NO":
             i.thaiword = final_arr[final_arr.index(i) - 1].thaiword
             i.translit = final_arr[final_arr.index(i) - 1].translit
@@ -145,6 +148,10 @@ def main():
         print 'translit: ', i.translit
         print 'translation: ', i.translation
         print '--------------------------------'
+    final_arr = set(final_arr)
+    final_arr = list(final_arr)
+    final_arr.sort()
+    writedict(final_arr)
     return final_arr
 
 
