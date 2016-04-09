@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import codecs, os, shutil, json
+import codecs, os, shutil, json, re
 import pythai
-DICT = u"/home/new_words/thai/dict/dict.json"
+DICT = u"/home/new_words/thai/dict/test_dict_2.json"
 
 def main():
-    global DICT
     path_load = get_path() 
     #path_load = u"c:\\test" #вставка 
     dictionary = read_data(DICT)
@@ -35,24 +34,49 @@ def copy_repository(path_load): ##DONE
 
 def tag_repository(repository, dictionary): ##DONE
     for i in os.walk(repository):
-        print i
+        #print i
         for j in i[-1]:
             tag_file(i[0] + u"/" + j, dictionary)
             
 def tag_file(path, dictionary): ##DONE
     new_file = codecs.open(path, "r", "utf-8")
-    text = new_file.read()
-    new_file.close()
-    text = text.clear(text)###
-    text = tag_text(text, dictionary)
+    is_text = False
+    res = u""
+    for i in new_file:
+        #print type(i)
+        if is_text:
+            res += tag_text(i, dictionary)
+        else:
+            res += i
 
+        if u"<text>" in i and not u"</text>" in i:
+            is_text = True
+        elif u"</text>" in i:
+            is_text = False
+            #text = new_file.read()
+    new_file.close()
+    #text = text_clear(text)
+    #texts, text = text_clear(text)
+    #print texts
+    #tag_texts = []
+    #for i in texts:
+        #tag_texts.append(tag_text(i, dictionary))
+    #parts = text.split(u"@#")
+    #i = 0
+    
+    #for i in parts:
+        #res += i
+        #if i < len(tag_texts):
+            #res += tag_texts[i]
+            #i += 1
     new_file = codecs.open(path+u".xml", "w", "utf-8")
-    new_file.write(text)
+    new_file.write(res)
     new_file.close()
     os.remove(path)
     
     
 def tag_text(text, dictionary): ##hmmm...
+    #print u"###", text
     result = [u"<body>"]
     sents = text.split()
     for i in sents:
@@ -60,30 +84,36 @@ def tag_text(text, dictionary): ##hmmm...
         for j in pythai.split(i):
             result.append(tag_word(j, dictionary))
         result.append(u"</se>")
-    result.append(u"</body>") 
-    return create_csv(result)
+    result.append(u"</body>")
+    return create_xml(result)
 
 def tag_word(word, dictionary): #!!!
     res = u"<w>"
     if word in dictionary:
         for i in dictionary[word]:
             flag = dictionary[word][i]
-            res += u"<ana lex=" + u'"' + word + u'"' + u" gr=" + u'"' + flag[1]+ u'"' + u" trans=" + u'"' + flag[0] + u'"></ana>'
+            res += u"<ana lex=" + u'"' + word + u'"' + u" pos=" + u'"' 
+	    for k in flag[1]:
+		res += u'"' + k + u'",'
+	    res = res[:-1] 
+	    res += u'"' +  u" trans=" + u'"' + flag[0] + u'"' + u" translit=" + u'"' + flag[2] +'"></ana>'
     res = res + word + u"</w>"
     return res
 
-def create_csv(result):
+def create_xml(result):
     return u"\r\n".join(result)
 
 
 def text_clear(text):
-    get_text = re.compile(u"<text>.*?</text>")
-    get_tags = re.compile(u"</?text>?")
-    texts = get_text.findall(text)
-    print texts
-    for i in xrange(len(texts)):
-        texts[i] = get_tags.sub(texts[i], u"")
-    return u" ".join(texts)
+    get_text = re.compile(u"<text>.*</text>")
+    #texts = get_text.findall(text)
+    #print texts
+    text = get_text.sub(u"@#", text)
+    #for i in xrange(len(texts)):
+        #texts[i] = texts[i].replace(u"<text>", u"")
+        #texts[i] = texts[i].replace(u"</text>", u"")
+    #return texts, text
+    return text
 
 #=============================================================
 def read_data (path):
@@ -94,9 +124,14 @@ def read_data (path):
 
 def write_data (path, data):
     json_data = json.dumps(data, ensure_ascii=False, indent=1)  
-    json_file = codecs.open (path, 'w', 'cp1251')
+    json_file = codecs.open (path, 'w', 'utf-8')
     json_file.write (json_data)
     json_file.close()
 
 if __name__ == '__main__':
     main()
+
+#a = codecs.open("149071.xml", "r", "utf-8")
+#b = a.read()
+#c = text_clear(b)
+#print c
