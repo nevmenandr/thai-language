@@ -104,6 +104,7 @@ def yaitron():
 
 
 def writedict(arr):
+    import json
     f = codecs.open('slovar.json', 'w', 'utf-8')
     d = {}  # финальный словарь
     subd = []  # служебный массив
