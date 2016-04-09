@@ -1,22 +1,5 @@
 # -*- coding: utf-8 -*-
 
-'''python
-import pythai
-
-pythai.split(u"การที่ได้ต้องแสดงว่างานดี")
-»> u"การ ที่ ได้ ต้อง แสดง ว่า งาน ดี"
-
-pythai.word_count(u"การที่ได้ต้องแสดงว่างานดี")
-»> 8
-
-pythai.contains_thai(u"hello")
-»> False
-
-pythai.contains_thai(u"helloการที่ไ")
-»> True
-'''
-
-
 import os
 import time
 import codecs
@@ -35,19 +18,49 @@ def read_xml(path):
             yield tree, filename
 
 
-def token_iterator(tree):
-    text = tree.xpath('//text')[0].text
-    tokens = pythai.split(text)
+def token_iterator(sentence):
+    tokens = pythai.split(sentence)
     for token in tokens:
         yield token
 
 
+def sentence_iterator(tree):
+    text = tree.xpath('//text')[0].text
+    sentences = text.split(u' ')
+    for sentence in sentences:
+        yield sentence
+
+
 def write_xml(tree, path, filename):
-    for token in token_iterator(tree):
-        print token
+    new_document = etree.Element(u'body')
+    xml_doc = etree.ElementTree(new_document)
+    meta = etree.Element(u'meta')
+    link = etree.Element(u'link')
+    title = etree.Element(u'title')
+    genre = etree.Element(u'genre')
+    title.text = u'title'
+    genre.text = u'genre'
+    meta.append(link)
+    meta.append(title)
+    meta.append(genre)
+    new_document.append(meta)
+    for sentence in sentence_iterator(tree):
+        se = etree.Element(u'se')
+        for token in token_iterator(sentence):
+            word = etree.Element(u'w')
+            ana = etree.Element(u'ana')
+            ana.attrib[u'lex'] = token
+            ana.attrib[u'morph'] = u''
+            ana.attrib[u'gr'] = u'S,nom,sg'
+            ana.attrib[u'trans'] = token
+            word.append(ana)
+            word.text = token
+            se.append(word)
+        new_document.append(se)
+
     open_name = path + filename
-    with codecs.open(open_name, u'w', u'utf-8') as w:
-        w.write(u'foo')
+    with codecs.open(open_name, u'w') as w:
+        xml_doc.write(w, encoding=u'utf-8')
 
 
 def main():

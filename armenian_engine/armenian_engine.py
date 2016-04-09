@@ -50,9 +50,10 @@ class Word:
         self.sent = u''
 
     def get_result(self):
+        pos = self.pos.split(u',')
         return str(self.sentence_number) + u'\t' + str(self.word_number) + u'\t\t\t' + self.content + u'\t\t' +\
                str(self.nvar) + u'\t' + str(self.nlems) + u'\t' + str(self.self_number) + u'\t' + self.lemma + u'\t\t' +\
-               self.translation + u'\t' + self.pos + u'\t' + self.pos + u'\t\t\t\t' + self.sent + u'\n'
+               self.translation + u'\t' + pos[0] + u'\t' + u' '.join(pos[1::]) + u'\t\t\t\t' + self.sent + u'\n'
 
 
 def read_xml(path):
@@ -74,10 +75,6 @@ def write_prs(tree, text_id, path):
     for i, sentence in enumerate(sentences, start=1):
         words = sentence.xpath('./w')
         for j, word in enumerate(words, start=1):
-            '''
-            В этом месте нужно поменять все на просто word.text, когда будет человеческий XML
-            # new_word.content = word.text
-            '''
             content = u''.join([x for x in word.itertext()])
             content = re.sub(u' +', u'', content, re.U)
             content = re.sub(u'\r\n+', u'', content, re.U)
