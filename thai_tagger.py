@@ -2,8 +2,8 @@
 
 import codecs, os, shutil, json, re
 import pythai
+#DICT = u"/home/new_words/thai/dict/dict_fil.json"
 DICT = u"/home/new_words/thai/dict/test_dict_2.json"
-
 def main():
     path_load = get_path() 
     #path_load = u"c:\\test" #вставка 
@@ -88,16 +88,22 @@ def tag_text(text, dictionary): ##hmmm...
     return create_xml(result)
 
 def tag_word(word, dictionary): #!!!
+    if u"<text>" in word:
+	return u"<text>"
+    if u"</text>" in word:
+	return u"</text>"
     res = u"<w>"
     if word in dictionary:
         for i in dictionary[word]:
             flag = dictionary[word][i]
-            res += u"<ana lex=" + u'"' + word + u'"' + u" pos=" + u'"' 
+            res += u"<ana lex=" + u'"' + word + u'"' + u" pos=" 
 	    for k in flag[1]:
 		res += u'"' + k + u'",'
 	    res = res[:-1] 
-	    res += u'"' +  u" trans=" + u'"' + flag[0] + u'"' + u" translit=" + u'"' + flag[2] +'"></ana>'
+	    res += u" trans=" + u'"' + flag[0] + u'"' + u" translit=" + u'"' + flag[2] +'"></ana>'
     res = res + word + u"</w>"
+    #print res
+    #print "\n\n"
     return res
 
 def create_xml(result):
