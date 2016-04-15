@@ -10,7 +10,7 @@
 Ранее пропущенные страницы находятся [тут](https://yadi.sk/d/mgz9psnYovN6j)
 
 [**Другой тайский словарь**](https://github.com/veer66/Yaitron/tree/master/data)  
-[**Промежуточная версия нашего словаря**](https://github.com/nevmenandr/thai-language/blob/master/slovar.zip)
+[**Наш словарь**](https://github.com/nevmenandr/thai-language/blob/master/slovar.zip)
 
 [**Соответствие в тегах между словарями**](https://docs.google.com/spreadsheets/d/1TUpAeWCaBly1Hyaphcyq-Uq3grXG8cZlwHVSKHnk7OE/edit)
 
