@@ -10,10 +10,8 @@ class Word:
             self.thaiword = 'NO'
         try:
             self.pos = root.xpath('./td[@class="pos"]')[0].text_content().split(', ')
-            if self.pos == ['']:
-                self.pos = ["pos is missing"]
         except:
-            self.pos = ["pos is missing"]
+            self.pos = [""]
         if self.thaiword != 'NO':
             self.translit = root.xpath('./td')[1].text_content()
         else:
@@ -32,18 +30,35 @@ class Word:
     def posmerge(self):
         changedict = {
             'ADJ': 'adjective',
+            'adj': 'adjective',
             'N': 'noun',
+            '์N': 'noun',
+            '์์N': 'noun',
+            'ืN': 'noun',
             'V': 'verb',
+            '์V': 'verb',
             'VI': 'verb, intransitive',
             'VT': 'verb, transitive',
-            'ADV': 'adverb'
+            'ADV': 'adverb',
+            'AVD': 'adverb',
+            'PRON': 'pronoun',
+            'AUX': 'auxiliary verb',
+            'IDM': 'idiom',
+            'ABBR': 'abbreviation',
+            'INT': 'interjection',
+            'CONJ': 'conjunction',
+            'CLAS': 'classifier',
+            'PREP': 'preposition',
+            'PREF': 'prefix',
+            'ADV   V': 'adverb, verb'
         }
         for i in self.pos:
             if i in changedict:
-                if i == 'VI' or i == 'VT':
+                if i == 'VI' or i == 'VT' or i=='ADV   V':
                     self.pos.extend(changedict[i].split(', '))
                 else:
                     self.pos.append(changedict[i])
+                self.pos.remove(i)
         return self
 
 
@@ -58,7 +73,6 @@ def readdict():
             words = words[1:-1]
             for i in words:
                 arrwords.append(Word(i))
-    print 'readdict finished'
     return arrwords
 
 
@@ -75,12 +89,11 @@ def yaitron():
     final_arr = []
     dict = codecs.open('yaitron.xml', 'r', 'utf-8')
     dict = dict.read()
-    print 'dict read'
     root = lxml.etree.fromstring(dict)
     words = root.xpath("//entry[@lang='tha']")
     for word in words:
         i = Word()
-        i.pos = word.xpath('./pos')[0].text
+        i.pos = [word.xpath('./pos')[0].text]
         i.thaiword = word.xpath('./headword')[0].text
         i.translit = 'NO'
         i.translation = word.xpath('./translation')[0].text
@@ -92,20 +105,19 @@ def yaitron():
         try:
             i.pos = word.xpath('./pos')[0].text.split(', ')
         except:
-            i.pos = ["pos is missing"]
+            i.pos = [""]
         i.translation = word.xpath('./headword')[0].text
-        i.translit = 'NO'
+        i.translit = ''
         i.thaiword = word.xpath('./translation')[0].text
         i = i.posmerge()
         final_arr.append(i)
         i = None
-    print 'yaitron finished'
     return final_arr
 
 
 def writedict(arr):
     import json
-    f = codecs.open('slovar.json', 'w', 'utf-8')
+    f = codecs.open('slovar5.json', 'w', 'utf-8')
     d = {}  # финальный словарь
     subd = []  # служебный массив
     subd2 = {}  # служебный словарь
@@ -129,7 +141,6 @@ def writedict(arr):
             else:
                 count2 = arr.index(n)
                 break
-        print i, d[i]
     json.dump(d, f, ensure_ascii=False, indent=2)
     f.close()
 
@@ -138,17 +149,10 @@ def main():
     arrwords = readdict()
     final_arr = yaitron()
     final_arr.extend(arrwords)
-    print 'next'
     for i in final_arr:
-        print i.thaiword
         if i.thaiword == "NO":
             i.thaiword = final_arr[final_arr.index(i) - 1].thaiword
             i.translit = final_arr[final_arr.index(i) - 1].translit
-        print 'word: ', i.thaiword
-        print 'pos: ', i.pos
-        print 'translit: ', i.translit
-        print 'translation: ', i.translation
-        print '--------------------------------'
     final_arr = set(final_arr)
     final_arr = list(final_arr)
     final_arr.sort()
