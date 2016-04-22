@@ -53,10 +53,10 @@ def tag_file(path, dictionary): ##DONE
             is_text = True
         elif u"</text>" in i:
             is_text = False
-		if is_text:
-			res += tag_text(i, dictionary)
-		else:
-			res += i
+	if is_text:
+	    res += tag_text(i, dictionary)
+	else:
+	    res += i
             #text = new_file.read()
     new_file.close()
     #text = text_clear(text)
