@@ -1,7 +1,5 @@
-adverb
-example sentence
-PHRV
 
+example sentence
 noun
 proper noun
 person
@@ -9,28 +7,26 @@ phrase
 formal
 adjective
 idiom
-verb
-transitive
 geographical
+verb
 intransitive
+adverb
 loanword
 English
+transitive
 colloquial
 Japanese
 abbreviation
-SL
 classifier
 conjunction
 plural
-pronoun
 interjection
-PRF
 preposition
 vulgar
 figurative
 event
 Pali
-PRON
+pronoun
 poetic
 Sanskrit
 auxiliary verb
@@ -44,11 +40,9 @@ onomatopoeia
 END
 DET
 Chinese
-SUF
 Lao
 French
 QUES
-DM
 Khmer
 Italian
 Latin
@@ -56,11 +50,7 @@ FIXP
 Greek
 Cambodian
 NEG
-ART
 German
-INTER
 UNK
-PERP
-PHRV0
 Javanese
 Peguan/Mon
