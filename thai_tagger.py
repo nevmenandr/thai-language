@@ -48,14 +48,13 @@ def tag_file(path, dictionary): ##DONE
         #    res += tag_text(i, dictionary)
         #else:
         #    res += i
-
+	is_flag = True
         if u"<text>" in i and not u"</text>" in i:
             is_text = True
-	    res += i
-	    continue
+	    is_flag = False
         elif u"</text>" in i:
             is_text = False
-	if is_text:
+	if is_text and is_flag:
 	    res += tag_text(i, dictionary)
 	else:
 	    res += i
