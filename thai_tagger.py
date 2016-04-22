@@ -2,10 +2,9 @@
 
 import codecs, os, shutil, json, re
 import pythai
-DICT = u"/home/new_words/thai/dict/dict.json"
-
+#DICT = u"/home/new_words/thai/dict/dict_fil.json"
+DICT = u"/home/new_words/thai/dict/test_dict_2.json"
 def main():
-    global DICT
     path_load = get_path() 
     #path_load = u"c:\\test" #вставка 
     dictionary = read_data(DICT)
@@ -35,7 +34,7 @@ def copy_repository(path_load): ##DONE
 
 def tag_repository(repository, dictionary): ##DONE
     for i in os.walk(repository):
-        print i
+        #print i
         for j in i[-1]:
             tag_file(i[0] + u"/" + j, dictionary)
             
@@ -44,17 +43,20 @@ def tag_file(path, dictionary): ##DONE
     is_text = False
     res = u""
     for i in new_file:
-        print type(i)
-        if is_text:
-            print "!!!!!!!"
-            res += tag_text(i, dictionary)
-        else:
-            res += i
+        #print type(i)
+        #if is_text:
+        #    res += tag_text(i, dictionary)
+        #else:
+        #    res += i
 
-        if i == u"<text>":
+        if u"<text>" in i and not u"</text>" in i:
             is_text = True
-        elif i == u"</text>":
+        elif u"</text>" in i:
             is_text = False
+		if is_text:
+			res += tag_text(i, dictionary)
+		else:
+			res += i
             #text = new_file.read()
     new_file.close()
     #text = text_clear(text)
@@ -79,23 +81,33 @@ def tag_file(path, dictionary): ##DONE
     
 def tag_text(text, dictionary): ##hmmm...
     #print u"###", text
-    result = [u"<text><body>"]
+    result = [u"<body>"]
     sents = text.split()
     for i in sents:
         result.append(u"<se>")
         for j in pythai.split(i):
             result.append(tag_word(j, dictionary))
         result.append(u"</se>")
-    result.append(u"</body></text>")
+    result.append(u"</body>")
     return create_xml(result)
 
 def tag_word(word, dictionary): #!!!
+    if u"<text>" in word:
+	return u"<text>"
+    if u"</text>" in word:
+	return u"</text>"
     res = u"<w>"
     if word in dictionary:
         for i in dictionary[word]:
             flag = dictionary[word][i]
-            res += u"<ana lex=" + u'"' + word + u'"' + u" pos=" + u'"' + flag[1]+ u'"' + u" trans=" + u'"' + flag[0] + u'"' + u" translit=" + u'"' + flag[2] +'"></ana>'
+            res += u"<ana lex=" + u'"' + word + u'"' + u" pos=" 
+	    for k in flag[1]:
+		res += u'"' + k + u'",'
+	    res = res[:-1] 
+	    res += u" trans=" + u'"' + flag[0] + u'"' + u" translit=" + u'"' + flag[2] +'"></ana>'
     res = res + word + u"</w>"
+    #print res
+    #print "\n\n"
     return res
 
 def create_xml(result):
