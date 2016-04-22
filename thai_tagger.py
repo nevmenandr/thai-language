@@ -51,6 +51,8 @@ def tag_file(path, dictionary): ##DONE
 
         if u"<text>" in i and not u"</text>" in i:
             is_text = True
+	    res += i
+	    continue
         elif u"</text>" in i:
             is_text = False
 	if is_text:
@@ -73,7 +75,7 @@ def tag_file(path, dictionary): ##DONE
         #if i < len(tag_texts):
             #res += tag_texts[i]
             #i += 1
-    new_file = codecs.open(path+u".xml", "w", "utf-8")
+    new_file = codecs.open(path, "w", "utf-8")
     new_file.write(res)
     new_file.close()
     os.remove(path)
