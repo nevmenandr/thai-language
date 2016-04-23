@@ -12,7 +12,7 @@ __author__ = 'gree-gorey'
 def read_xml(path):
     for root, dirs, files in os.walk(path):
         for filename in files:
-            open_name = path + filename
+            open_name = os.path.join(root, filename)
             with codecs.open(open_name, u'r', u'utf-8') as f:
                 try:
                     tree = etree.parse(f)
