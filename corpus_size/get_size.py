@@ -18,33 +18,46 @@ def read_xml(path):
                     tree = etree.parse(f)
                 except:
                     tree = etree.XML(u'<dummy>foo</dummy>')
-            yield tree
+            yield tree, open_name
 
 
-def count(tree):
-    text = tree.xpath('//text')
+def count(tree, open_name):
+    text = tree.xpath(u'//text')
     if text:
-        tokens = pythai.split(text[0].text)
-        return len(tokens)
+        try:
+            tokens = pythai.word_count(text[0].text)
+            return u'success', tokens
+        except:
+            return u'encoding error', 0
     else:
-        return 0
+        return u'parsing error', 0
 
 
-def write_result(result):
+def write_result(result, encoding_error, parsing_error):
     open_name = u'./result.txt'
+    string = u'tokens: ' + str(result) + u'\nencoding error: ' + str(encoding_error) + u'\nparsing error: '\
+             + str(parsing_error)
     with codecs.open(open_name, u'w', u'utf-8') as w:
-        w.write(str(result))
+        w.write(string)
 
 
 def main():
     t1 = time.time()
 
     result = 0
+    encoding_error = 0
+    parsing_error = 0
 
-    for xml_tree in read_xml(u'./texts/'):
-        result += count(xml_tree)
+    for xml_tree, open_name in read_xml(u'./texts/'):
+        mode, number = count(xml_tree, open_name)
+        if mode == u'success':
+            result += number
+        elif mode == u'encoding error':
+            encoding_error += 1
+        else:
+            parsing_error += 1
 
-    write_result(result)
+    write_result(result, encoding_error, parsing_error)
 
     t2 = time.time()
     print t2 - t1
