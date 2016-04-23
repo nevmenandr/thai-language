@@ -36,4 +36,4 @@ Apache OpenNLP для тайского языка
 Понять, в чем ошибка (*NullPointerException*)  
 Удачи!
 
-тут инструкция: (https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27848011 "вики")
+тут инструкция: [вики](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27848011)
