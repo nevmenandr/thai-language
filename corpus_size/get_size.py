@@ -5,6 +5,7 @@ import time
 import codecs
 import pythai
 from lxml import etree
+import libthai
 
 __author__ = 'gree-gorey'
 
@@ -24,11 +25,12 @@ def read_xml(path):
 def count(tree, open_name):
     text = tree.xpath(u'//text')
     if text:
-        try:
-            tokens = pythai.word_count(text[0].text)
-            return u'success', tokens
-        except:
-            return u'encoding error', 0
+        print libthai.__file__
+        # try:
+        tokens = pythai.word_count(text[0].text)
+        return u'success', tokens
+        # except:
+        #     return u'encoding error', 0
     else:
         return u'parsing error', 0
 
