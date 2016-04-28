@@ -31,3 +31,8 @@
 [**Tlexs**](http://sansarn.com/tlex/)
 
 [**Краулер своими руками**](http://pi-code.blogspot.ru/search/label/%D0%BA%D1%80%D0%B0%D1%83%D0%BB%D0%B5%D1%80)
+
+Видео: 
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=7Klex2I08JU" target="_blank"><img src="http://img.youtube.com/vi/7Klex2I08JU/0.jpg" 
+alt="commits vizual" width="240" height="180" border="10" /></a>
