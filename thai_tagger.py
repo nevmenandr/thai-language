@@ -50,7 +50,7 @@ def tag_file(path, dictionary): ##DONE
         #    res += i
 	is_flag = True
         if u"<text>" in i and not u"</text>" in i:
-            print i
+            #print i
     	    is_text = True
 	    is_flag = False
         elif u"</text>" in i:
