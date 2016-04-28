@@ -93,6 +93,10 @@ def write_prs(tree, text_id, path):
                 new_word.lemma = analysis.get(u'lex')
                 new_word.translation = analysis.get(u'trans')
                 new_word.pos = analysis.get(u'gr')
+                if j == len(words):
+                    new_word.sent = u'eos'
+                if j == 1:
+                    new_word.sent = u'bos'
 
                 word_result = new_word.get_result()
                 prs.data.append(word_result)
