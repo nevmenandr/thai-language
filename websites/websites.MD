@@ -4,11 +4,9 @@
 
 ~~http://www.thaigov.go.th/~~
 
-~~thai-wiki~~
+~~https://th.wikipedia.org/~~
 
-http://nithan.in.th
-
-http://www.mcu.ac.th/
+~~http://nithan.in.th~~
 
 http://www.thaipost.net
 

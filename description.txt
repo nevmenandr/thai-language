@@ -1,3 +1,6 @@
-This website contains the Thai Corpus, at the moment including about (...) million tokens. The texts collected for the corpora, news articles mostly, are furnished with user-friendly morphological markup consisting of tags assigned to individual tokens.
+This website contains the Thai Corpus, at the moment including about (…) million tokens. The texts collected for the corpora, news articles mostly, are furnished with user-friendly morphological markup consisting of tags assigned to individual tokens.
 
-The Thai Corpus employs the search engine of the Eastern Armenian National Corpus (EANC). The Thai Corpus is being developed by the team of students of HSE School of Linguistics in Moscow under the guidance of professor Boris Orekhov, consisting of Ignatyev Grigory, Ershova Alexandra, Kuznetsova Anna, Shalganova Tatyana, Kolomeytsev Daniil and Mikulin Nikolai. (...) also contributed to the project.
+The Thai Corpus is designed both for linguists who study the issues related to Thai language and for anyone interested in Thai language.
+
+The Thai Corpus employs the search engine of the Eastern Armenian National Corpus (EANC). The Thai Corpus is being developed by the team of students of HSE School of Linguistics in Moscow under the guidance of professor Boris Orekhov. The team consisted of Ignatyev Grigory, Ershova Alexandra, Kuznetsova Anna, Shalganova Tatyana, Kolomeytsev Daniil and Mikulin Nikolai. The consulting help on Thai language was provided by Nadezhda Motina.
+Natalia Filippova, Elizaveta Kuzmenko, Tatyana Gavrilova, Elena Krotova, Elmira Mustakimova, Olga Sozinova, Aleksandra Martynova, Maria Sheyanova, Marina Kustova and Julia Badryzlova also contributed to the project.
