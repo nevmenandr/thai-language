@@ -2,9 +2,9 @@
 
 ~~http://www.thaipoem.com~~
 
-http://www.thaigov.go.th/
+~~http://www.thaigov.go.th/~~
 
-
+~~thai-wiki~~
 
 http://nithan.in.th
 
