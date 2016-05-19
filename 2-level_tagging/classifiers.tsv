@@ -1,0 +1,11 @@
+#n - noun, num - количественное числительное, onum - порядковое числитльное, C - classifier, a-adjective		
+position	TAG	доп.условия
+n+num+C	<PL.DEF>	num != หนึ่ง
+n+num+C	<DEF>	num = หนึ่ง
+n+C+นี้/นั้น/โน้น	<DEF>	none
+n+C+onum	<DEF>	none
+n+กี่ +C	<PL.DEF>	none
+n+C+a	<DEF>	none
+n+C+ไหน	<DEF>	none
+n+หลาย+C	<PL.DEF>	none
+หลาย+C	<PL.DEF>	none
