@@ -1,0 +1,14 @@
+n - noun, P - particle,  v - verb, s - sentence (sP - particle is the last word of the sentence), a - adjective			
+word	tag	position	comment
+กำลัง	<PRS>	Pv	
+อยู่	<PRS>	vP	
+จะ	<FUT>	Pv	
+ได้	<PST>	Pv	
+แล้ว	<PST>	??	(есть зн-е УЖЕ)
+ยัง	<PST>	??	(зн-е ЕЩЕ в вопр и отр предл)
+มา	<PST>	sP	(зн-е СХОДИЛ, СДЕЛАЛ,ВЕРНУЛСЯ)
+ไม่	<NEG>	Pv	
+กำลัง + จะ	<INTEN>	PPv	(намерение, конструкция из 2-х частиц)
+กว่า	<CMPR>	naPn	(n1 авее n2)
+ที่สุด	<SUP>	naP	(n1 самая авая)
+พวก	<PL>	Pn	
