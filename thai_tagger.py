@@ -2,6 +2,7 @@
 
 import codecs, os, shutil, json, re
 import pythai
+
 #DICT = u"/home/new_words/thai/dict/dict_fil.json"
 DICT = u"./slovar.json"
 def main():
