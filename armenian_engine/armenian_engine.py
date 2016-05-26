@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
 import os
-import re
 import time
+import json
 import codecs
 from lxml import etree
 
@@ -12,10 +12,10 @@ __author__ = 'gree-gorey'
 class PrsItem:
     def __init__(self):
         self.docid = None
-        self.title = None
-        self.genre = None
-        self.words = None
-        self.sentences = None
+        self.title = u''
+        self.genre = u''
+        self.words = 0
+        self.sentences = 0
         self.data = []
 
     def get_text(self):
@@ -46,39 +46,70 @@ class Word:
         self.self_number = None
         self.lemma = None
         self.translation = None
+        self.translit = None
         self.pos = None
-        self.sent = u''
+        self.punct = ''
+        self.sent = ''
 
     def get_result(self):
-        pos = self.pos.split(u',')
-        return str(self.sentence_number) + u'\t' + str(self.word_number) + u'\t\t\t' + self.content + u'\t\t' +\
-               str(self.nvar) + u'\t' + str(self.nlems) + u'\t' + str(self.self_number) + u'\t' + self.lemma + u'\t\t' +\
-               self.translation + u'\t' + pos[0] + u'\t' + u' '.join(pos[1::]) + u'\t\t\t\t' + self.sent + u'\n'
+        pos = self.pos.split(',')
+        return (str(self.sentence_number) + '\t' + str(self.word_number) + '\t\t\t' + self.content + '\t\t' +
+                str(self.nvar) + '\t' + str(self.nlems) + '\t' + str(self.self_number) + '\t' + self.lemma + '\t' +
+                self.translation + '\t\t' + pos[0] + '\t' + ' '.join(pos[1::]) + '\t\t\t' + self.punct + '\t' +
+                self.sent).replace('\r\n', '').replace('\n', '') + '\n'
+
+
+def load_index():
+    return json.load(codecs.open('index.json', 'r', 'utf-8'))['index']
+
+
+def dump_index(index):
+    w = codecs.open('index.json', 'w', 'utf-8')
+    json.dump({'index': index}, w, ensure_ascii=False, indent=2)
+    w.close()
 
 
 def read_xml(path):
     for root, dirs, files in os.walk(path):
         for filename in files:
-            open_name = path + filename
-            with codecs.open(open_name, u'r', u'utf-8') as f:
-                tree = etree.parse(f)
-            yield tree
+            open_name = os.path.join(root, filename)
+            with codecs.open(open_name, 'r', 'utf-8') as f:
+                tree = None
+                try:
+                    tree = etree.parse(f)
+                except:
+                    continue
+                if tree:
+                    yield tree, open_name
 
 
-def write_prs(tree, text_id, path):
+def create_empty_folder_tree(open_root, write_root):
+    for root, dirs, files in os.walk(open_root):
+        for directory in dirs:
+            path_to_dir = os.path.join(root, directory).replace(open_root, write_root)
+            if not os.path.exists(path_to_dir):
+                os.makedirs(path_to_dir)
+
+
+def write_prs(tree, write_name, index):
     prs = PrsItem()
-    prs.docid = text_id
+    prs.docid = index
     prs.title = tree.xpath('//meta/title')[0].text
     prs.genre = tree.xpath('//meta/genre')[0].text
     sentences = tree.xpath('//body/se')
     prs.sentences = len(sentences)
     for i, sentence in enumerate(sentences, start=1):
         words = sentence.xpath('./w')
+        prs.words = len(words)
         for j, word in enumerate(words, start=1):
             content = u''.join([x for x in word.itertext()])
-            content = re.sub(u' +', u'', content, re.U)
-            content = re.sub(u'\r\n+', u'', content, re.U)
-            content = re.sub(u'\n+', u'', content, re.U)
+            content = content.replace(u' ', u'')
+            content = content.replace(u' ', u'')
+            content = content.replace(u'\t', u'')
+            content = content.replace(u'\r\n', u'')
+            content = content.replace(u'\n', u'')
+            if not content:
+                continue
             analyses = word.xpath('./ana')
             nvar = len(analyses)
             lemmata = len(set([analysis.get('lex') for analysis in analyses]))
@@ -90,31 +121,41 @@ def write_prs(tree, text_id, path):
                 new_word.self_number = k
                 new_word.nvar = nvar
                 new_word.nlems = lemmata
-                new_word.lemma = analysis.get(u'lex')
-                new_word.translation = analysis.get(u'trans')
-                new_word.pos = analysis.get(u'gr')
+                new_word.lemma = analysis.get('lex')
+                new_word.pos = analysis.get('pos')
+                new_word.translation = analysis.get('trans')
+                new_word.translit = analysis.get('translit')
                 if j == len(words):
-                    new_word.sent = u'eos'
+                    new_word.sent = 'eos'
+                    new_word.punct = u' '
                 if j == 1:
-                    new_word.sent = u'bos'
+                    new_word.sent = 'bos'
 
                 word_result = new_word.get_result()
                 prs.data.append(word_result)
 
     prs_result = prs.get_text()
-    write_name = path + u'text_id_' + str(text_id) + u'.prs'
-    with codecs.open(write_name, u'w', u'utf-8') as w:
+    with codecs.open(write_name, 'w', 'utf-8') as w:
         w.write(prs_result)
 
 
 def main():
     t1 = time.time()
 
-    text_id = 0
+    index = load_index()
 
-    for xml_tree in read_xml(u'./corpus_from/'):
-        text_id += 1
-        write_prs(xml_tree, text_id, u'./corpus_into/')
+    open_root = './texts_tagged/'
+    # write_root = './texts_tagged_armenian/'
+    write_root = '/var/www/web-corpora.net/ThaiCorpus/languages/thai/parsed_data/'
+
+    create_empty_folder_tree(open_root, write_root)
+
+    for xml_tree, open_name in read_xml(open_root):
+        index += 1
+        write_name = open_name.replace(open_root, write_root).replace('.xml', '.prs')
+        write_prs(xml_tree, write_name, index)
+
+    dump_index(index)
 
     t2 = time.time()
     print t2 - t1
