@@ -4,6 +4,7 @@ import os
 import time
 import json
 import codecs
+import commands
 import pythai
 from lxml import etree
 
@@ -126,6 +127,13 @@ def write_xml(tree, dictionary, write_name):
 def main():
     t1 = time.time()
 
+    files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
+
+    # files = 1000
+
+    print 'Total number of files: ' + str(files)
+    print
+
     dictionary = json.load(codecs.open(u'./dictionary.json', u'r', u'utf-8'))
 
     open_root = './texts/'
@@ -142,8 +150,13 @@ def main():
 
         write_xml(xml_tree, dictionary, write_name)
 
-        if i > 1000:
-            break
+        print round(float(i)/files*100, 3), "% complete...         \r",
+
+        # if i > 1000:
+        #     break
+
+    print ''
+    print 'FINISHED'
 
     t2 = time.time()
     print t2 - t1

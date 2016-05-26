@@ -4,6 +4,7 @@ import os
 import time
 import json
 import codecs
+import commands
 from lxml import etree
 
 __author__ = 'gree-gorey'
@@ -142,6 +143,13 @@ def write_prs(tree, write_name, index):
 def main():
     t1 = time.time()
 
+    files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
+
+    # files = 1000
+
+    print 'Total number of files: ' + str(files)
+    print
+
     index = load_index()
 
     open_root = './texts_tagged/'
@@ -150,12 +158,20 @@ def main():
 
     create_empty_folder_tree(open_root, write_root)
 
+    i = 0
+
     for xml_tree, open_name in read_xml(open_root):
+        i += 1
         index += 1
         write_name = open_name.replace(open_root, write_root).replace('.xml', '.prs')
         write_prs(xml_tree, write_name, index)
 
+        print round(float(i)/files*100, 3), "% complete...         \r",
+
     dump_index(index)
+
+    print ''
+    print 'FINISHED'
 
     t2 = time.time()
     print t2 - t1
