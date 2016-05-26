@@ -10,13 +10,19 @@
 
 ~~http://www.innnews.co.th/~~
 
+~~http://www.1morenews.com~~
+
+~~http://www.tnnthailand.com/~~
+
+http://www.voathai.com/
+
+
+
 http://www.thaipost.net
 
 http://thairath.co.th
 
 http://www.myhora.com/
-
-http://www.voathai.com/
 
 http://news.mthai.com/
 
@@ -44,8 +50,6 @@ http://hilight.kapook.com/
 
 http://news.kapook.com/
 
-http://www.tnnthailand.com/
-
 http://asianpacificnews.com/news4/
 
 http://m.news-lifestyle.com
@@ -57,8 +61,6 @@ http://www.junknews.today/junk-news
 http://www.meekhao.com
 
 http://thestar.gmember.com/news
-
-http://www.1morenews.com
 
 http://news.thaieurope.net
 
