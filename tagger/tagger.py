@@ -25,7 +25,6 @@ def read_xml(path):
                     yield tree, open_name
 
 
-
 def create_empty_folder_tree(open_root, write_root):
     for root, dirs, files in os.walk(open_root):
         for directory in dirs:
