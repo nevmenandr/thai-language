@@ -1,24 +1,38 @@
 # -*- coding:utf-8 -*-
 
-import codecs, os, lxml.etree
+import codecs, os, lxml.etree, logging, json
+
 
 def trainingset():
-    arrwords = []
+    arr = [[]]
     for root2, dirs, files in os.walk('thaipoem.com'):
         for file in files:
             f = codecs.open(os.path.join(root2, file), "r", "utf-8")
             exemel = f.read()
             f.close()
             root = lxml.etree.fromstring(exemel)[1]
-            #print root.tag
             words = root.xpath('./w')
-            for i in words:
+            n = 0
+            while n < len(words):
                 try:
-                    lex=i.xpath('/ana')[0]
-                    print lex.get('lex')
+                    lex = words[n].xpath('./ana')[0]
+                    if lex.get('lex') != '' and lex.get('pos') != '':
+                        arr[-1].append((lex.get('lex'), lex.get('pos')))
+                    else:
+                        arr.append([])
+                    n += 1
                 except:
-                    pass
+                    n += 1
+            arr.append([])
+    final_arr = []
+    for x in arr:
+        if len(x) > 1:
+            final_arr.append(x)
     print 'readdict finished'
-    return arrwords
+    return final_arr
 
-trainingset()
+
+def trainer():
+    from nltk.tag import hmm
+
+trainer()
