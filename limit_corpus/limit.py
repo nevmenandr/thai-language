@@ -3,7 +3,7 @@
 import os
 import time
 import shutil
-import random
+# import random
 
 __author__ = 'gree-gorey'
 
@@ -20,8 +20,8 @@ def copy(path, path_to_write, folder_limit, limit):
     for source in sources:
         # рекурсивно обходим папку
         for root, dirs, files in os.walk(source):
-            if len(files) > folder_limit:
-                files = random.sample(files, folder_limit)
+            # if len(files) > folder_limit:
+            #     files = random.sample(files, folder_limit)
             for filename in files:
                 open_name = os.path.join(root, filename)
                 write_name = open_name.replace(path, path_to_write)
@@ -54,16 +54,16 @@ def create_empty_folder_tree(open_root, write_root):
 def main():
     t1 = time.time()
 
-    limit = 500
+    limit = 50000
 
     open_root = '../dummy_texts/'
     write_root = '../new/'
 
     create_empty_folder_tree(open_root, write_root)
 
-    files_per_source = calculate(open_root, limit)
+    tokens_per_source = calculate(open_root, limit)
 
-    print files_per_source
+    print tokens_per_source
 
     copy(open_root, write_root, files_per_source, limit)
 

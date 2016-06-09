@@ -4,7 +4,7 @@ import os
 import time
 import json
 import codecs
-import commands
+# import commands
 import pythai
 from lxml import etree
 
@@ -23,6 +23,18 @@ def read_xml(path):
                     continue
                 if tree:
                     yield tree, open_name
+
+
+def iterate_sources(path):
+    # собираем все папки разных ресурсов
+    sources = []
+    for root, dirs, files in os.walk(path):
+        for source in dirs:
+            sources.append(os.path.join(root, source))
+
+    # обходим все эти папки по очереди
+    for source in sources:
+        yield source
 
 
 def create_empty_folder_tree(open_root, write_root):
@@ -114,24 +126,33 @@ def write_xml(tree, dictionary, write_name):
     meta.append(title)
     meta.append(genre)
     new_document.append(meta)
+
+    tokens = 0
+
     for sentence, is_thai in sentence_iterator(tree):
         se = analyze_sentence(sentence, is_thai, dictionary)
         if len(se) > 0:
             new_document.append(se)
+            tokens += len(se)
 
     with codecs.open(write_name, u'w') as w:
         xml_doc.write(w, encoding=u'utf-8')
+
+    return tokens
 
 
 def main():
     t1 = time.time()
 
-    files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
+    # files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
 
     # files = 1000
+    limit = 50000000
+    number_of_folders = 8
+    limit_per_folder = int(float(limit) / number_of_folders)
 
-    print 'Total number of files: ' + str(files)
-    print
+    # print 'Total number of files: ' + str(files)
+    # print
 
     dictionary = json.load(codecs.open(u'./dictionary.json', u'r', u'utf-8'))
 
@@ -142,14 +163,26 @@ def main():
 
     i = 0
 
-    for xml_tree, open_name in read_xml(open_root):
-        i += 1
+    total_tokens_number = 0
 
-        write_name = open_name.replace(open_root, write_root)
+    for source in iterate_sources(open_root):
 
-        write_xml(xml_tree, dictionary, write_name)
+        tokens_in_folder = 0
 
-        print round(float(i)/files*100, 3), "% complete...         \r",
+        for xml_tree, open_name in read_xml(source):
+            i += 1
+
+            write_name = open_name.replace(open_root, write_root)
+
+            tokens_here = write_xml(xml_tree, dictionary, write_name)
+
+            tokens_in_folder += tokens_here
+            total_tokens_number += tokens_here
+
+            print round(float(total_tokens_number)/limit*100, 3), "% complete...         \r",
+
+            if tokens_in_folder > limit_per_folder:
+                break
 
         # if i > 1000:
         #     break
