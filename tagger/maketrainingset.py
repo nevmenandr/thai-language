@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import codecs, os, lxml.etree, logging, json
+import codecs, os, lxml.etree, json
 
 
 def trainingset():
@@ -24,15 +24,24 @@ def trainingset():
                 except:
                     n += 1
             arr.append([])
-    final_arr = []
+    labelled_sequences = []
     for x in arr:
         if len(x) > 1:
-            final_arr.append(x)
-    print 'readdict finished'
-    return final_arr
+            labelled_sequences.append(x)
+    tag_set=set()
+    symbols = set()
+    for i in labelled_sequences:
+        for n in i:
+            tag_set.add(n[1])
+            symbols.add(n[0])
+    return labelled_sequences, tag_set, symbols
 
 
 def trainer():
-    from nltk.tag import hmm
+    import nltk
+    labelled_sequences, tag_set, symbols = trainingset()
+    trainer = nltk.tag.hmm.HiddenMarkovModelTrainer(tag_set, symbols)
+    hmm = trainer.train_supervised(labelled_sequences)
+    hmm.test(labelled_sequences[:100], verbose=False)
 
 trainer()
