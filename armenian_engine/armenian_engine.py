@@ -143,7 +143,7 @@ def write_prs(tree, write_name, index):
 def main():
     t1 = time.time()
 
-    files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
+    files = int(commands.getstatusoutput('find ./texts_tagged/ -type f | wc -l')[1])
 
     # files = 1000
 
