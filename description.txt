@@ -4,3 +4,13 @@ The Thai Corpus is designed both for linguists who study the issues related to T
 
 The Thai Corpus employs the search engine of the Eastern Armenian National Corpus (EANC). The Thai Corpus is being developed by the team of students of HSE School of Linguistics in Moscow under the guidance of professor Boris Orekhov. The team consisted of Ignatyev Grigory, Ershova Alexandra, Kuznetsova Anna, Shalganova Tatyana, Kolomeytsev Daniil and Mikulin Nikolai. The consulting help on Thai language was provided by Nadezhda Motina.
 Natalia Filippova, Elizaveta Kuzmenko, Tatyana Gavrilova, Elena Krotova, Elmira Mustakimova, Olga Sozinova, Aleksandra Martynova, Maria Sheyanova, Marina Kustova and Julia Badryzlova also contributed to the project.
+
+
+***
+This website gives access to the HSE Thai Corpus - the corpus of modern texts written in Thai language. The texts,  containing in whole 50 million tokens, were collected from various Thai websites (mostly news websites) by means of Scrapy (http://scrapy.org/). Each token was assigned it's English translation and part of speech tag. Some other grammatical tagging also was assigned where suitable.
+HSE Thai Corpus can be used both by native speakers of Thai and any English-speaking users since every recognized word is given it's English translation. It is a useful tool for linguists and basically anyone who interests themselves in Thai language. The corpus is suitable for lexical, syntactic and other sinchronical studies and, due to it's volume, can provide researchers with a huge amount of  data.
+The corpus employs the search engine of the Eastern Armenian National Corpus (EANC) (). The user-friendly and flexible search system allows users to gather material by grammatical and POS tags alongside with translations and, of course, actual wordforms. To make it easier for non-Thai-speakers to comprehend and use texts in the corpus we decided to separate words in each sentence with spaces.
+The Thai Corpus is being developed by the team of students of HSE School of Linguistics in Moscow under the guidance of professor Boris Orekhov. The team consisted of Ignatyev Grigory, Ershova Alexandra, Kuznetsova Anna, Shalganova Tatyana, Kolomeytsev Daniil and Mikulin Nikolai. The consulting help on Thai language was provided by Nadezhda Motina.
+Natalia Filippova, Elizaveta Kuzmenko, Tatyana Gavrilova, Elena Krotova, Elmira Mustakimova, Olga Sozinova, Aleksandra Martynova, Maria Sheyanova, Marina Kustova and Julia Badryzlova also contributed to the project.
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
