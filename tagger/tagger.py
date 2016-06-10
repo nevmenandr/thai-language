@@ -147,9 +147,6 @@ def main():
     # files = int(commands.getstatusoutput('find . -type f | wc -l')[1])
 
     # files = 1000
-    limit = 50000000
-    number_of_folders = 8
-    limit_per_folder = int(float(limit) / number_of_folders)
 
     # print 'Total number of files: ' + str(files)
     # print
@@ -165,9 +162,22 @@ def main():
 
     total_tokens_number = 0
 
+    residue = 0
+
     for source in iterate_sources(open_root):
 
+        print 'Begin ' + source + ' folder'
+
         tokens_in_folder = 0
+
+        limit = 50000000
+        number_of_folders = 8
+        limit_per_folder = int(float(limit) / number_of_folders)
+
+        if residue != 0:
+            limit_per_folder += residue
+
+        print 'Limit for this folder: ' + str(limit_per_folder) + ' tokens'
 
         for xml_tree, open_name in read_xml(source):
             i += 1
@@ -184,10 +194,19 @@ def main():
             if tokens_in_folder > limit_per_folder:
                 break
 
+        if tokens_in_folder < limit_per_folder:
+            residue += limit_per_folder - tokens_in_folder
+        else:
+            residue = 0
+
+        print ''
+        print 'In folder ' + source + ': ' + str(tokens_in_folder) + ' tokens'
+
         # if i > 1000:
         #     break
 
     print ''
+    print 'Total: ' + str(total_tokens_number) + ' tokens'
     print 'FINISHED'
 
     t2 = time.time()
