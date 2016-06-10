@@ -95,7 +95,8 @@ def create_empty_folder_tree(open_root, write_root):
 def write_prs(tree, write_name, index):
     prs = PrsItem()
     prs.docid = index
-    prs.title = tree.xpath('//meta/title')[0].text
+    if tree.xpath('//meta/title')[0].text:
+        prs.title = tree.xpath('//meta/title')[0].text
     prs.genre = tree.xpath('//meta/genre')[0].text
     sentences = tree.xpath('//body/se')
     prs.sentences = len(sentences)
