@@ -39,9 +39,13 @@ def trainingset():
 
 def trainer():
     import nltk
+    import dill
     labelled_sequences, tag_set, symbols = trainingset()
     trainer = nltk.tag.hmm.HiddenMarkovModelTrainer(tag_set, symbols)
     hmm = trainer.train_supervised(labelled_sequences)
-    hmm.test(labelled_sequences[:100], verbose=False)
+    hmm.test(labelled_sequences[:1000], verbose=False)
+    with open('my_tagger.dill', 'wb') as f:
+        dill.dump(hmm, f)
+    f.close()
 
 trainer()
