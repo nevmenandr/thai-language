@@ -53,6 +53,8 @@ def sentence_iterator(tree):
     sentences = [[u'', True]]
     previous_is_thai = True
     for char in text:
+        if not (32 <= ord(char) <= 126 or 3585 <= ord(char) <= 3675):
+            continue
         if 3585 <= ord(char) <= 3675:
             if not previous_is_thai:
                 sentences.append([u'', True])
@@ -170,7 +172,7 @@ def main():
 
         tokens_in_folder = 0
 
-        limit = 50000000
+        limit = 22000000
         number_of_folders = 8
         limit_per_folder = int(float(limit) / number_of_folders)
 
