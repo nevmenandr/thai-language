@@ -10,14 +10,23 @@ text = f.read()
 f.close()
 slovar = json.loads(text)
 
+global old_meanings
+old_meanings = []
+
 def clean(slovar):
+    old = 0
     for s in slovar:
         meanings = {}
         for l in slovar[s]:
             meanings[l] = (slovar[s][l][0])
+        old += len(meanings)
         if len(meanings) > 1:
             values = []
             for m in meanings:
+                split_m = meanings[m].split(';')
+                if len(split_m) > 1:
+                    for spl in split_m:
+                        values.append(spl.lstrip())
                 if meanings[m].startswith("[Thai transcription"):
                     new = re.findall("Thai transcription .+? \"(.+?)\"", meanings[m], flags=re.U)
                     if len(new) > 0:
@@ -30,7 +39,7 @@ def clean(slovar):
                         if u == slovar[s][l][0]:
                             del slovar[s][l]
                             break
-
+    old_meanings.append(old)
     for s in slovar:
         meanings = {}
         for l in slovar[s]:
@@ -44,12 +53,45 @@ def clean(slovar):
 
     return slovar
 
-slovar = clean(slovar)
-slovar = clean(slovar)
-slovar = clean(slovar)
+old = 0
+for s in slovar:
+    meanings = {}
+    for l in slovar[s]:
+        meanings[l] = (slovar[s][l][0])
+    old += len(meanings)
+old_meanings.append(old)
+
+new_meanings = 0
+
+while old_meanings[-1] != new_meanings:
+    slovar = clean(slovar)
+    new_meanings = 0
+    for s in slovar:
+        meanings = {}
+        for l in slovar[s]:
+            meanings[l] = (slovar[s][l][0])
+        new_meanings += len(meanings)
+
+new_meanings = 0
+for s in slovar:
+    meanings = {}
+    for l in slovar[s]:
+        meanings[l] = (slovar[s][l][0])
+    new_meanings += len(meanings)
+
+print u'There were ' + str(old_meanings[0] - new_meanings) + u' meanings deleted.'
 
 new_slovar = json.dumps(slovar, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ': '))
 f = codecs.open(u'new_slovar.json', 'w', 'utf-8')
 f.write(new_slovar)
 f.close()
+    
+            
+                
+                        
+                        
+                
 
+
+
+    
