@@ -130,15 +130,20 @@ def write_xml(tree, dictionary, write_name):
     new_document.append(meta)
 
     tokens = 0
+    sentences = 0
 
     for sentence, is_thai in sentence_iterator(tree):
         se = analyze_sentence(sentence, is_thai, dictionary)
-        if len(se) > 0:
+        if len(se) > 1:
+            sentences += 1
             new_document.append(se)
             tokens += len(se)
 
-    with codecs.open(write_name, u'w') as w:
-        xml_doc.write(w, encoding=u'utf-8')
+    if sentences > 1:
+        with codecs.open(write_name, u'w') as w:
+            xml_doc.write(w, encoding=u'utf-8')
+    else:
+        tokens = 0
 
     return tokens
 
