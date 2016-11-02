@@ -151,7 +151,8 @@ def main():
     print 'Total number of files: ' + str(files)
     print
 
-    index = load_index()
+    # index = load_index()
+    index = 0
 
     open_root = './texts_tagged/'
     # write_root = './texts_tagged_armenian/'
@@ -168,6 +169,9 @@ def main():
         write_prs(xml_tree, write_name, index)
 
         print round(float(i)/files*100, 3), "% complete...         \r",
+
+        if index > 65530:
+            break
 
     dump_index(index)
 

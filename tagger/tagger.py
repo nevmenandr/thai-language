@@ -171,14 +171,15 @@ def main():
 
     residue = 0
 
+    limit = 22000000
+    number_of_folders = 8
+
     for source in iterate_sources(open_root):
 
         print 'Begin ' + source + ' folder'
 
         tokens_in_folder = 0
 
-        limit = 22000000
-        number_of_folders = 8
         limit_per_folder = int(float(limit) / number_of_folders)
 
         if residue != 0:
