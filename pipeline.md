@@ -15,6 +15,7 @@
 удаляем ненужные файлы и создаем директорию для результатов:
 
 ```
+$ cd ~
 $ rm -r text_tagged
 $ mkdir text_tagged
 ```
@@ -22,7 +23,6 @@ $ mkdir text_tagged
 запускаем скрипт:
 
 ```
-$ cd ~
 $ python2 tagger.py
 ```
 
