@@ -1,6 +1,11 @@
 # thai-language
 В этом репозитории помещаются исходные коды программ, которые помогают нам в создании компьютерных инструментов для тайского языка. 
 
+# upd. [**Корпус сделан и доступен по этму адресу**](http://web-corpora.net/ThaiCorpus/)
+[**Тайский корпус**](http://web-corpora.net/ThaiCorpus/)
+
+# [**We have made the corpus, it is available here**](http://web-corpora.net/ThaiCorpus/)
+[**Thai corpus HSE**](http://web-corpora.net/ThaiCorpus/)
 
 [**Тайский корпус**](http://www.arts.chula.ac.th/~ling/TNCII/)
 
