@@ -9,7 +9,7 @@
 
 [**Тайский корпус**](http://www.arts.chula.ac.th/~ling/TNCII/)
 
-[**Еще один(более подробный) тайский корпус**] (https://sealang.net/thai/corpus.htm)
+[**Еще один, более подробный, тайский корпус**](https://sealang.net/thai/corpus.htm)
 
 [**Cайт-словарь**](http://www.thai-language.com/)  
 [**Старая версия словаря**](http://www.thai-language.com/dict)  
